@@ -16,7 +16,11 @@ ActiveRecord::Schema.define(version: 2020_11_17_034558) do
   enable_extension "plpgsql"
 
   create_table "merchants", force: :cascade do |t|
-    t.string "name"
+    t.string "username"
+    t.string "email"
+    t.string "mailing_address"
+    t.integer "credit_last_four"
+    t.string "credit_expire"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -27,6 +31,8 @@ ActiveRecord::Schema.define(version: 2020_11_17_034558) do
     t.integer "inventory"
     t.integer "price"
     t.string "category"
+    t.string "photo"
+    t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
