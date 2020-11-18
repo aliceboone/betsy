@@ -14,7 +14,7 @@ CSV.open("db/merchants_seeds.csv", "w", :write_headers => true, :headers => ["us
   end
 end
 
-CSV.open("db/orders_seeds.csv", "w", :write_headers => true, :headers => ["name"]) do |csv|
+CSV.open("db/orders_seeds.csv", "w", :write_headers => true, :headers => ["email", "address", "credit_name", "credit_expire", "security_code", "zip"]) do |csv|
   15.times do
     email = Faker::Internet.email
     address = Faker::Address.full_address
@@ -27,16 +27,16 @@ CSV.open("db/orders_seeds.csv", "w", :write_headers => true, :headers => ["name"
   end
 end
 
-  CSV.open("db/products_seeds.csv", "w", :write_headers => true, :headers => ["name"]) do |csv|
-    25.times do
-      name = Faker::Commerce.product_name
-      description = Faker::Lorem.sentence
-      inventory = rand(0..3)
-      price = Faker::Commerce.price
-      category = "Other"
-      photo = Faker::Placeholdit.image
-      rating = Faker::Number.number(digits: 3)
+CSV.open("db/products_seeds.csv", "w", :write_headers => true, :headers => %w[name description inventory price category photo rating]) do |csv|
+  25.times do
+    name = Faker::Commerce.product_name
+    description = Faker::Lorem.sentence
+    inventory = rand(0..25)
+    price = Faker::Commerce.price
+    category = "Other"
+    photo = Faker::Placeholdit.image
+    rating = rand(0...5)
 
-      csv << [name, description, inventory, price, category, photo, rating]
-    end
+    csv << [name, description, inventory, price, category, photo, rating]
   end
+end
