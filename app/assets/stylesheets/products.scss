@@ -2,10 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "bootstrap";
- @import "merchants";
- @import "products";
- @import "orders"
-
+//  @import "merchants";
+//  @import "products";
+//  @import "orders"
 
 .form-control {
  display:block;
@@ -37,6 +36,7 @@ form {
   justify-content:center;
   margin-bottom:0
  }
+
  .form-inline .form-group {
   display:flex;
   flex:0 0 auto;
@@ -44,18 +44,21 @@ form {
   align-items:center;
   margin-bottom:0
  }
+
  .form-inline .form-control {
   display:inline-block;
   width:auto;
   vertical-align:middle
  }
+
  .form-inline .form-control-plaintext {
   display:inline-block
  }
- .form-inline .input-group,
- .form-inline .custom-select {
+
+ .form-inline .input-group, .form-inline .custom-select {
   width:auto
  }
+
  .form-inline .form-check {
   display:flex;
   align-items:center;
@@ -63,31 +66,33 @@ form {
   width:auto;
   padding-left:0
  }
+
  .form-inline .form-check-input {
   position:relative;
   margin-top:0;
   margin-right:0.25rem;
   margin-left:0
  }
+
  .form-inline .custom-control {
   align-items:center;
   justify-content:center
  }
- .form-inline .custom-control-label {
-  margin-bottom:0
- }
-}
 
- h1, h2,
+ .form-inline .custom-control-label {
+  margin-bottom: 0;
+ }
+
+ h1, h2,{
    font-weight: bold;
  }
 
  a, h2, h3 {
-//    color: $primary-teal;
+//    color:
  }
 
  a:hover {
-//    color: $dark-teal;
+//    color:
    text-decoration: none;
  }
 
@@ -96,13 +101,12 @@ form {
  }
 
  .btn-primary {
-   background-color: $primary-teal;
    color: white;
-//    border-color: $primary-teal;
+//    border-color:
  }
 
  .btn:hover {
-//    background-color: $dark-teal;
+//    background-color:
    color: white;
  }
 
