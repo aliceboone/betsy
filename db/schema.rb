@@ -56,5 +56,4 @@ ActiveRecord::Schema.define(version: 2020_11_18_192455) do
     t.bigint "merchant_id"
     t.index ["merchant_id"], name: "index_products_on_merchant_id"
   end
-
 end
