@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_11_18_192455) do
 
   # These are extensions that must be enabled in order to support this database
@@ -21,6 +22,12 @@ ActiveRecord::Schema.define(version: 2020_11_18_192455) do
     t.string "mailing_address"
     t.integer "credit_last_four"
     t.string "credit_expire"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
