@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
 
-  # has_many :orderitems waiting for model creation - skr
+  #has_many :orderitems
+  # waiting for model creation - skr
 
 
 
