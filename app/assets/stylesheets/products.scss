@@ -2,8 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "bootstrap";
- @import "users";
- @import "works";
+ @import "merchants";
+ @import "products";
+ @import "orders"
 
 
 .form-control {
