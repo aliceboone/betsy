@@ -8,7 +8,7 @@ describe Product do
   describe "validations" do
       it "product must have a name" do
         # Arrange
-        product = Product.where(name: 'desk lamp')
+        product = Product.find_by(name: "desk lamp")
         product.name = nil
         # Assert
         expect(product.valid?).must_equal false
@@ -17,17 +17,17 @@ describe Product do
       end
       it "product must have an price" do
         # Arrange
-        product = Product.where(name: 'desk lamp')
+        product = Product.first
         product.price = nil
         # Assert
         expect(product.valid?).must_equal false
         expect(product.errors.messages).must_include :price
-        expect(product.errors.messages[:price]).must_equal ["can't be blank"]
+        expect(product.errors.messages[:price]).include? "can't be blank"
       end
       it "product name must be unique" do
         # Arrange
-        product = Merchant.new
-        product.username = 'desk lamp'
+        product = Product.find_by(name: 'logitech mouse')
+        product.name = 'nalgene'
         # Assert
         expect(product.valid?).must_equal false
         expect(product.errors.messages).must_include :name
@@ -58,7 +58,7 @@ describe Product do
         #Assert
         expect(product.valid?).must_equal false
         expect(product.errors.messages).must_include :merchant
-        expect(product.errors.messages[:merchant]).must_equal ["can't be blank"]
+        expect(product.errors.messages[:merchant]).must_equal ["must exist", "can't be blank"]
       end
     end
 end

@@ -8,7 +8,7 @@ describe Merchant do
   describe "validations" do
     it "merchant must have a username" do
       # Arrange
-      merchant = Merchant.where(username: 'Jello Porcini')
+      merchant = Merchant.find_by(username: 'Jello Porcini')
       merchant.username = nil
       # Assert
       expect(merchant.valid?).must_equal false
@@ -17,8 +17,8 @@ describe Merchant do
     end
     it "must have an email" do
       # Arrange
-      merchant = Merchant.where(username: 'Dexter Excaliber')
-      merchant.description = nil
+      merchant = Merchant.find_by(username: 'Dexter Excaliber')
+      merchant.email = nil
 
       # Assert
       expect(merchant.valid?).must_equal false
