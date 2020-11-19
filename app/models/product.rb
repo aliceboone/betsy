@@ -1,25 +1,14 @@
 class Product < ApplicationRecord
 
   belongs_to :merchant
-
+  has_and_belongs_to_many :categories
 
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: {greater_than: 0}
   validates :merchant, presence: true
 
-  def self.category1
-    where(category: "category1")
-  end
 
-  def self.category2
-    where(category: "category2")
-  end
-
-  def self.category3
-    where(category: "category3")
-  end
-
-  def self.category4
-    where(category: "category4")
+  def out_of_stock
+    self.update_attribute(:out_of_stock, true)
   end
 end
