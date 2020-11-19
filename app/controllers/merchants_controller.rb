@@ -71,15 +71,6 @@ class MerchantsController < ApplicationController
     params.require(:merchant).permit(:username, :email, :mailing_address, :credit_last_four, :credit_expire)
   end
 
-  def self.build_from_github(auth_hash)
-    merchant = Merchant.new
-    merchant.uid = auth_hash[:uid]
-    merchant.provider = "github"
-    merchant.username = auth_hash["info"]["name"]
-    merchant.email = auth_hash["info"]["email"]
-    return merchant
-  end
-
   private
 
   def find_merchant

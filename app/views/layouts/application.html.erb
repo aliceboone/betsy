@@ -11,7 +11,7 @@
   <header>
     <nav>
       <ul>
-        <% if session[:user_id] %>
+        <% if session[:merchant_id] %>
           <li><%= link_to "Log out", logout_path, method: "delete" %></li>
         <% else %>
           <li><%= link_to "Login with Github", github_login_path %></li>
