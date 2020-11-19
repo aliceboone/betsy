@@ -8,7 +8,7 @@ describe CategoriesController do
                       email: 'jdo@somewhere.com',
                       mailing_address: '1111 3rd Ave NE Seattle WA 98000',
                       credit_last_four: 1111,
-                      credit_expire: '12/23' )
+                      credit_expire: '12/23')
 
   end
 
@@ -23,11 +23,10 @@ describe CategoriesController do
     it 'can create a new category' do
 
       expect{
-        post merchant_categories_path(1)
+        post categories_path, params: {category: {category_name:"Face"}}
       }.must_change 'Category.count', 1
 
-      new_category = Category.find_by(merchant_id: 1)
-      expect(new_category.merchant_id).must_equal 1
+      new_category = Category.last
 
       must_respond_with :redirect
       must_redirect_to category_path(new_category.id)

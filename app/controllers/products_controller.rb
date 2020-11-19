@@ -83,11 +83,11 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    if @product.merchant != @current_user
-      not_sell
-      redirect_to root_path
-      return
-    end
+    # # if @product.merchant != @current_user
+    #   not_sell
+    #   redirect_to root_path
+    #   return
+    # end
   end
 
   def destroy
@@ -112,7 +112,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :inventory, :price, :photo, :merchant_id, :category_id)
+    params.require(:product).permit(:name, :description, :inventory, :price, :photo, :merchant_id, :category)
   end
 
   def find_product
