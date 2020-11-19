@@ -4,7 +4,7 @@ class CreateMerchants < ActiveRecord::Migration[6.0]
       t.string :username
       t.string :email
       t.string :mailing_address
-      t.integer :credit_last_four
+      t.string :credit_last_four
       t.string :credit_expire
 
       t.timestamps

@@ -1,5 +1,5 @@
 class MerchantsController < ApplicationController
-  before_action :find_merchant, only: [:show, :edit, :update]
+  before_action :find_merchant, only: [:show, :edit, :update, :destroy]
 
   def index
     @merchants = Merchant.all
@@ -18,9 +18,19 @@ class MerchantsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    if @merchant.nil?
+      redirect_to merchants_path
+      return
+    end
+  end
 
-  def edit; end
+  def edit;
+    if @merchant.nil?
+      redirect_to merchants_path
+      return
+      end
+  end
 
   def update
     if @merchant.update(merchant_params)
@@ -35,12 +45,15 @@ class MerchantsController < ApplicationController
       redirect_to merchants_path
       return
     end
+
+    @merchant.destroy
+    redirect_to merchants_path
   end
 
   private
 
   def merchant_params
-    params.require(:merchant).permit(:title, :description, :isbn, :author_id)
+    params.require(:merchant).permit(:username, :email, :mailing_address, :credit_last_four, :credit_expire)
   end
 
   def find_merchant
