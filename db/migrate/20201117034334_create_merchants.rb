@@ -8,6 +8,7 @@ class CreateMerchants < ActiveRecord::Migration[6.0]
       t.string :credit_expire
 
       t.timestamps
+
     end
   end
 end

@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 2020_11_19_201927) do
     t.string "credit_expire"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "uid"
+    t.string "provider"
+    t.string "name"
   end
 
   create_table "order_items", force: :cascade do |t|
