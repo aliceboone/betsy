@@ -6,10 +6,11 @@ class ProductsController < ApplicationController
   # Helper Methods
   def not_found_notice
     flash[:notice] = "This product does not exist."
+    redirect_to products_path
   end
 
   def not_saved_notice
-    flash.now[:notice] = "A problem occurred: Could not create #{@product.category}"
+    flash.now[:notice] = "Could not create #{@product.category}"
   end
 
   def saved_notice
@@ -24,20 +25,31 @@ class ProductsController < ApplicationController
     flash[:success] = "Successfully destroyed #{@product.category}"
   end
 
+  def not_sell
+    flash[:error] = " You don't sell this product"
+  end
+
+  def not_in_stock
+  flash[:success] = " #{@product.name} out of stock! "
+  end
+
   #############################################################################################
 
   def index
-    @category1 = Product.category1
-    @category2 = Product.category2
-    @category3 = Product.category2
-    @category4 = Product.category4
+    if params[:category_name]
+      @products = Category.find_by(category_name: params[:category_name]).products
+      @all_categories = params[:category_name]
+    elsif params[:username]
+      @products = Merchant.find_by(username: params[:username]).products
+      @all_categories = 'Products by #params[:username]'
+    else
+      @products = Product.all
+      @all_categories = 'all products'
+    end
   end
 
   def show
-    if @product.nil?
-      not_found_notice
-      return
-    end
+
   end
 
   def new
@@ -59,11 +71,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.nil?
-      not_found_notice
-      return
-    elsif
-    @product.update(prduct_params)
+    if @product.update(product_params)
       update_notice
       redirect_to product_path
       return
@@ -74,25 +82,44 @@ class ProductsController < ApplicationController
     end
   end
 
+  def edit
+    # # if @product.merchant != @current_user
+    #   not_sell
+    #   redirect_to root_path
+    #   return
+    # end
+  end
+
   def destroy
-    if @product.nil?
-      not_found_notice
-      return
-    else
-      @product.destroy
+    if @product.destroy
       destroyed_notice
       redirect_to products_path
       return
     end
   end
 
+  def out_of_stock
+    if @product.Merchant != current_user
+      not_sell
+      redirect_to root_path
+    else
+      @product.out_of_stock!
+      not_in_stock
+      redirect_to root_path
+    end
+  end
+
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :inventory, :price, :category, :photo, :rating)
+    params.require(:product).permit(:name, :description, :inventory, :price, :photo, :merchant_id, :category)
   end
 
   def find_product
     @product = Product.find_by_id(params[:id])
+    if @product.nil?
+      not_found_notice
+      return
+    end
   end
 end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :homepages, only: [:index]
 
   resources :products do
-    resources :order_items, only: [:create]
+    resources :orderitems, only: [:create]
   end
 
   get "/auth/github", as: "github_login"
@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   patch '/orders/:id/cancel', to: 'orders#cancel', as: 'cancel'
 
   resources :reviews, only: [:new, :create]
-  resources :categories, only: [:new, :create]
+  resources :categories, only: [:new, :create, :show]
 end
