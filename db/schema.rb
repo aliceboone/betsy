@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_235616) do
     t.string "username"
     t.string "email"
     t.string "mailing_address"
-    t.integer "credit_last_four"
+    t.string "credit_last_four"
     t.string "credit_expire"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
