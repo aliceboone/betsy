@@ -3,15 +3,15 @@ Rails.application.routes.draw do
   root to: "homepages#homepage"
   resources :homepages, only: [:index]
 
-  resources :products, except: [:destroy] do
+  resources :products do
     resources :order_items, only: [:create]
   end
 
-  resources :merchants, only: [:index, :show, :create]
+  resources :merchants
 
   resources :orderitems, only: [:update, :destroy]
   patch 'orderitems/:id/mark_shipped', to: 'orderitems#mark_shipped', as: 'mark_shipped'
-  
+
   resources :orders, only: [:index, :show, :edit, :update]
   get '/orders/:id/cart/success', to: 'orders#success', as: 'success'
   get '/orders/:id/cart', to: 'orders#cart', as: 'cart'
