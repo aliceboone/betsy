@@ -42,7 +42,7 @@
           <%= f.label :categories %> <br>
           <%= f.collection_check_boxes(:category_ids, Category.all, :id, :category_name) do |b| %>
             <%= b.label class:"custom-control custom-checkbox" do%>
-              <%=b.check_box + b.text%>
+              <%= b.check_box + b.text %>
             <%end%>
           <% end %>
         </div>
