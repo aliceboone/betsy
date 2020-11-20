@@ -16,3 +16,99 @@
 @import "bootstrap";
 
 @import "**/*";
+
+// Header
+header {
+  padding: 30px;
+  font-size: 20px;
+  max-width: 100%;
+}
+
+.header-logo, a{
+  font-family: arial;
+  font-weight: 700;
+  font-size: 90px;
+  color: #000;
+}
+
+.header-logo:hover {
+  text-decoration: none;
+  color: #6d6d6d;
+}
+
+.header-byline {
+  font-family: arial;
+  font-weight: 400;
+  font-style: italic;
+  color: #7f7f7f;
+}
+
+// Footer
+
+.footer_text {
+  font-size: 12px;
+}
+
+.footer_link {
+  color: #fff;
+  font-size: 12px;
+}
+
+.footer_link:hover {
+  text-decoration: none;
+  color: #161616;
+}
+
+// Navigation
+.nav-item-custom {
+  font-family: arial;
+  text-transform: uppercase;
+}
+
+.nav-link-custom, a {
+  font-family: arial;
+  color: #000;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.nav-link-custom:hover {
+  text-decoration: none;
+  color: #7f7f7f;
+}
+
+.local-navigation, a {
+  color: rgb(206, 206, 206);
+}
+
+.local-navigation:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+.navbar-nav li:hover>.dropdown-menu {
+  display: block;
+}
+
+// Content
+
+html {
+  height: 100%;
+}
+ main {
+   padding: 2rem;
+ }
+
+ body {
+   min-height: 100%;
+   display: grid;
+   grid-template-rows: 1fr auto;
+   overflow-x: hidden;
+   font-family: arial;
+ }
+
+.content {
+  padding: 40px 70px 60px 70px;
+}
+
+
