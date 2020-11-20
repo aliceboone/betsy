@@ -19,13 +19,14 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order_items = @order.order_items
     if @order.nil?
       redirect_to orders_path
       return
     end
   end
 
-  def edit;
+  def edit
     if @order.nil?
       redirect_to orders_path
       return
