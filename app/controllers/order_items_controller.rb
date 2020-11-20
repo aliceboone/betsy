@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-
+  before_action :require_cart, only: [:create]
   def index
   end
 
@@ -13,19 +13,18 @@ class OrderItemsController < ApplicationController
 
   def create
     chosen_product = Product.find(params[:product_id])
-    current_order = @order
-
-    if current_order.products.include?(chosen_product)
-      @order_item = current_order.order_items.find_by(:product_id => chosen_product)
-      @order_item.quantity += 1
-    else
-      @order_item = OrderItem.new
-      @order_item.order = current_order
-      @order_item.product = chosen_product
+    if chosen_product.nil?
+      flash[:error] = "Invalid product"
+      redirect_to root_path
+      return
     end
 
-    @order_item.save
-    redirect_to order_path(current_order)
+    if @cart.add_product(chosen_product)
+      redirect_to cart_path
+    else
+      flash[:error] = "Product failed to be added to the order"
+      redirect_to root_path
+    end
   end
 
   def destroy

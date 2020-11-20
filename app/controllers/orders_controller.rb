@@ -1,12 +1,18 @@
 class OrdersController < ApplicationController
   before_action :find_order, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_cart, only: [:cart]
   def index
     @orders = Order.all
   end
 
   def new
     @order = Order.new
+  end
+
+  def cart
+    @order = @cart
+    @order_items = @order.order_items
+    render :show
   end
 
   def create
@@ -19,13 +25,14 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order_items = @order.order_items
     if @order.nil?
       redirect_to orders_path
       return
     end
   end
 
-  def edit;
+  def edit
     if @order.nil?
       redirect_to orders_path
       return
