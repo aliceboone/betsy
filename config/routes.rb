@@ -23,8 +23,11 @@ Rails.application.routes.draw do
   get '/orders/:id/cart/success', to: 'orders#success', as: 'success'
   get '/orders/:id/cart', to: 'orders#cart', as: 'cart'
   patch '/orders/:id/cancel', to: 'orders#cancel', as: 'cancel'
+  
+  resources :reviews, only: [:new, :create]
+  resources :categories, only: [:new, :create, :show, :edit]
 
+  
   resources :order_items
 
   resources :categories, only: [:new, :create, :show]
-end

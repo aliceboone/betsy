@@ -9,6 +9,8 @@ class Product < ApplicationRecord
 
 
   def out_of_stock
-    self.update_attribute(:out_of_stock, true)
+    return self.inventory == 0
   end
+
+
 end
