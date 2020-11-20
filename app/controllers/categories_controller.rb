@@ -34,8 +34,7 @@ class CategoriesController < ApplicationController
     @category = Category.create(category_params)
     if @category.save
       saved_notice
-      redirect_to merchant_path(session)[:merchant_id]
-      # redirect_to category_path(@category.id)
+      redirect_to category_path(@category.id)
     else
       not_saved_notice
     end
