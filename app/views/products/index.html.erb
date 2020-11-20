@@ -1,0 +1,42 @@
+<section class="content">
+  <section class="album px-5">
+    <h6><%= link_to "< HOME", root_path, class: "local-navigation" %></h6>
+    <% if @all_categories_name != "all products" %>
+      <h6><%= link_to "< ALL PRODUCTS", products_path, class: "local-navigation" %></h6>
+    <% end %>
+    <h1 class="catalog__header"><%=@all_categories_name%></h1>
+    <h4 class="catalog__secondary-header"> <%= @products.count %> results</h4>
+    <hr>
+    <% if @products.length > 0 %>
+      <section class="container-fluid">
+        <div class="row">
+          <% @products.each do |product| %>
+            <% if !product.out_of_stock %>
+              <div class="col-md-3">
+                <div class="card mb-3 rounded-0 border-0">
+                  <div class="embed-responsive embed-responsive-1by1">
+                    <img class="card-img-top embed-responsive-item rounded-0" src='<%= product.photo %>' alt='<%= product.name%>'>
+                  </div>
+                  <div class="card-title text-uppercase pt-3">
+                    <section class="catalog__card-title-container">
+                      <h5> <%= button_to product.name, product_path(product.id), method: :get, class: "catalog__card-title-button text-left"%> </h5>
+                    </section>
+                    <div class="catalog__body-text">
+<!--                      $<%#= number_with_precision(product.price, :precision => 2, :delimiter => ',')%>-->
+                    </div>
+                    <div class="catalog__body-text">
+<!--                      Rating: <%#= product.average_rating%>/5  (<%#=product.reviews.count%> of reviews)-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </section>
+    <% else %>
+      <h3 class="catalog__header">No products in the system!</h3>
+    <% end %>
+  </section>
+
+</section>

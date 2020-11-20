@@ -4,7 +4,12 @@
     <p>Description: <%= @product.description %></p>
     <p>Price:<%= @product.price %> </p>
     <p>Inventory:<%= @product.inventory%></p>
-    <p>Category:<%= @product.category%></p>
+    <p>Category:</p>
+    <ul>
+    <% @product.categories.each do |category| %>
+      <li><%= category.category_name%></li>
+      <% end %>
+    </ul>
     <section>
 
       <%= link_to "Add to Cart", product_order_items_path(@product.id), method: :post %>
@@ -14,3 +19,4 @@
     </section>
   </section>
 </main>
+

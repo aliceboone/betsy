@@ -10,19 +10,19 @@ class ProductsController < ApplicationController
   end
 
   def not_saved_notice
-    flash.now[:notice] = "Could not create #{@product.category}"
+    flash.now[:notice] = "Could not create"
   end
 
   def saved_notice
-    flash[:success] = "Successfully created #{@product.category} with ID #{@product.id}"
+    flash[:success] = "Successfully created"
   end
 
   def update_notice
-    flash[:success] = "Successfully updated #{@product.category}"
+    flash[:success] = "Successfully updated"
   end
 
   def destroyed_notice
-    flash[:success] = "Successfully destroyed #{@product.category}"
+    flash[:success] = "Successfully destroyed"
   end
 
   def not_sell
@@ -83,11 +83,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    # # if @product.merchant != @current_user
-    #   not_sell
-    #   redirect_to root_path
-    #   return
-    # end
+
   end
 
   def destroy
