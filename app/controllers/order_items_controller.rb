@@ -20,7 +20,7 @@ class OrderItemsController < ApplicationController
     end
 
     if @cart.add_product(chosen_product)
-      redirect_to order_path(@cart)
+      redirect_to cart_path
     else
       flash[:error] = "Product failed to be added to the order"
       redirect_to root_path
