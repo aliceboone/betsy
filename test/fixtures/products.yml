@@ -1,0 +1,24 @@
+product-one:
+  name: desk lamp
+  price: 12.50
+  merchant_id: 1
+product-two:
+  name: nalgene
+  price: 10
+  merchant_id: 1
+product-three:
+  name: used laptop
+  price: 200.00
+  merchant_id: 2
+product-four:
+  name: webcam
+  price: 50
+  merchant_id: 3
+product-five:
+  name: headphones
+  price: 75
+  merchant_id: 1
+product-six:
+  name: logitech mouse
+  price: 30
+  merchant_id: 3
