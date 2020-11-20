@@ -1,0 +1,39 @@
+<main>
+  <main><% if @merchant.errors.any? %>
+      <ul class="errors">
+        <% @merchant.errors.each do |column, message| %>
+          <li>
+            <strong><%= column.capitalize %></strong> <%= message %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <section>
+      <%= form_with model: @merchant do |f|  %>
+
+        <div class="form-group">
+          <%= f.label :mailing_address %>
+          <%= f.text_field :mailing_address %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :credit_last_four %>
+          <%= f.text_field :credit_last_four %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :credit_expire%>
+          <%= f.text_field :credit_expire %>
+        </div>
+
+
+        <div class="form-group">
+          <%= f.submit action_name, class: " btn btn-primary" %>
+          <%= link_to 'Cancel', merchants_path, class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </section>
+  </main>
+
+</main>

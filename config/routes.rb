@@ -5,11 +5,12 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :orderitems, only: [:create]
+    resources :reviews, only: [:new, :create]
   end
 
   get "/auth/github", as: "github_login"
   get "/auth/github/callback", to: "merchants#create", as: "create_merchant"
-  delete "/logout", to: "users#destroy", as: "logout"
+  delete "/logout", to: "merchants#destroy", as: "logout"
 
   resources :products
 
@@ -22,7 +23,8 @@ Rails.application.routes.draw do
   get '/orders/:id/cart/success', to: 'orders#success', as: 'success'
   get '/orders/:id/cart', to: 'orders#cart', as: 'cart'
   patch '/orders/:id/cancel', to: 'orders#cancel', as: 'cancel'
-
+  
   resources :reviews, only: [:new, :create]
   resources :categories, only: [:new, :create, :show, :edit]
 end
+
