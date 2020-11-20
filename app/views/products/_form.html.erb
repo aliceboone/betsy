@@ -39,7 +39,8 @@
 
         <div class="form-group">
           <%= f.submit action_name, class: " btn btn-primary" %>
-          <%= f.submit action_name, class: "btn btn-secondary" %>
+          <%= link_to 'Cancel', products_path, class: "btn btn-secondary" %>
+          <%#= f.submit action_name, class: "btn btn-secondary" %>
         </div>
       <% end %>
     </section>
