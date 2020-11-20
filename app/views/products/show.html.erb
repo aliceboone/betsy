@@ -4,7 +4,12 @@
     <p>Description: <%= @product.description %></p>
     <p>Price:<%= @product.price %> </p>
     <p>Inventory:<%= @product.inventory%></p>
-    <p>Category:<%= @product.category%></p>
+    <p>Category:</p>
+    <ul>
+    <% @product.categories.each do |category| %>
+      <li><%= category.category_name%></li>
+      <% end %>
+    </ul>
     <section>
       <%= link_to "Back to categories", root_path, class: "button" %>
       <%= link_to "Edit", edit_product_path(@product.id), class: "button"%>
@@ -12,3 +17,4 @@
     </section>
   </section>
 </main>
+
