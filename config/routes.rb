@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "homepages#homepage"
+  root to: 'homepages#homepage'
   resources :homepages, only: [:index]
 
   resources :products do
@@ -8,9 +8,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
-  get "/auth/github", as: "github_login"
-  get "/auth/github/callback", to: "merchants#create", as: "create_merchant"
-  delete "/logout", to: "merchants#destroy", as: "logout"
+  get '/auth/github', as: 'github_login'
+  get '/auth/github/callback', to: 'merchants#create', as: 'create_merchant'
+  delete '/logout', to: 'merchants#destroy', as: 'logout'
 
   resources :products
 
@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get '/orders/:id/cart/success', to: 'orders#success', as: 'success'
   get '/orders/:id/cart', to: 'orders#cart', as: 'cart'
   patch '/orders/:id/cancel', to: 'orders#cancel', as: 'cancel'
+
+  resources :order_items
 
   resources :categories, only: [:new, :create, :show]
 end
