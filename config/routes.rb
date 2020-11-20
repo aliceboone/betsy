@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :homepages, only: [:index]
 
   resources :products do
-    resources :orderitems, only: [:create]
+    resources :order_items, only: [:create]
     resources :reviews, only: [:new, :create]
   end
 
@@ -16,12 +16,14 @@ Rails.application.routes.draw do
 
   resources :merchants
 
-  resources :orderitems, only: [:update, :destroy]
-  patch 'orderitems/:id/mark_shipped', to: 'orderitems#mark_shipped', as: 'mark_shipped'
+  resources :order_items, only: [:update, :destroy]
+  patch 'order_items/:id/mark_shipped', to: 'order_items#mark_shipped', as: 'mark_shipped'
+
+  get '/orders/cart', to: 'orders#cart', as: 'cart'
 
   resources :orders, only: [:index, :show, :edit, :update]
+
   get '/orders/:id/cart/success', to: 'orders#success', as: 'success'
-  get '/orders/:id/cart', to: 'orders#cart', as: 'cart'
   patch '/orders/:id/cancel', to: 'orders#cancel', as: 'cancel'
   
   resources :reviews, only: [:new, :create]
@@ -33,3 +35,4 @@ Rails.application.routes.draw do
   resources :categories, only: [:new, :create, :show]
 
 end
+

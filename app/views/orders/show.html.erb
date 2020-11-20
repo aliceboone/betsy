@@ -1,7 +1,11 @@
 <h2>Your Cart</h2>
 
-<ul>
-<% @order_item.each do |order_item| %>
-  <li> order_item</li>
+<% if @order_items.empty? %>
+  Cart is Empty
+  <% else %>
+  <ul>
+  <% @order_items.each do |order_item| %>
+    <li><%= order_item.product.name %> with a quantity of <%= order_item.quantity %></li>
+  <% end %>
+  </ul>
 <% end %>
-</ul>
