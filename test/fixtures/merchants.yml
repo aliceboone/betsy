@@ -1,15 +1,25 @@
 merch-one:
   username: Jello Porcini
   email: jello@yahoo.com
+  provider: github
+  uid: 1234521
 merch-two:
   username: Dexter Excaliber
   email: dexthelab@gmail.com
+  provider: github
+  uid: 1234522
 merch-three:
   username: Kato Conure
   email: hello@comcast.net
+  provider: github
+  uid: 1234523
 merch-four:
   username: Momo Goyl
   email: goylparty@goylers.com
+  provider: github
+  uid: 1234524
 merch-five:
   username: Ginger Puppy
   email: myotherthird@petfinder.com
+  provider: github
+  uid: 1234525
