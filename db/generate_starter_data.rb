@@ -40,3 +40,12 @@ CSV.open("db/products_seeds.csv", "w", :write_headers => true, :headers => %w[na
     csv << [name, description, inventory, price, category, photo, rating]
   end
 end
+
+
+CSV.open("db/categories_seeds.csv", "w", :write_headers => true, :headers => %w[category_name]) do |csv|
+  10.times do
+    category_name = Faker::Color.color_name
+
+    csv << [category_name]
+  end
+end
