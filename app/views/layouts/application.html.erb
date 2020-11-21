@@ -8,13 +8,14 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
   <header>
     <section class="inline-navigation">
-<<<<<<< HEAD
-<!--      <div class="collapse navbar-collapse>-->
-=======
+
       <div class="collapse navbar-collapse">
->>>>>>> 7dbf63f50a6f0ff2e61779824e3bef820f7b4909
+
+      <div class="collapse navbar-collapse">
+
         <div class="d-flex">
           <div class="mr-auto p-2"><%= link_to "AleBae", root_path, class: "header-logo" %>
             <section class="header-byline">
@@ -29,11 +30,13 @@
               <%= link_to "All products", products_path, class: "nav-link-custom" %>
             </i>
           </li>
+
           <li class="nav-item">
             <i class="fa fa-custom fa-users">
               <%= link_to "All merchants", merchants_path, class: "nav-link-custom" %>
             </i>
           </li>
+
           <li class="nav-item dropdown">
             <i class="fa fa-custom fa-sitemap">
               <a class="nav-link-custom" href="#" >
@@ -41,9 +44,9 @@
               </a>
             </i>
             <div class="dropdown-menu">
-
             </div>
           </li>
+
         <% if session[:merchant_id] %>
           <li class="nav-item">
             <% @current_user = Merchant.find_by(id: session[:merchant_id]) %>
@@ -72,6 +75,7 @@
       </div>
     </section>
   </header>
+
   <body>
     <%= yield %>
   </body>
