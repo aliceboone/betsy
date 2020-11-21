@@ -32,7 +32,7 @@ class MerchantsController < ApplicationController
       if merchant.save
         flash[:success] = "Logged in as new aloe enthusiast #{merchant.username}"
       else
-        flash[:success] = "Could not create new aloe enthusiast account: #{merchant.errors.messages}"
+        flash[:error] = "Could NOT create new aloe enthusiast account: #{merchant.errors.messages}"
         return redirect_to root_path
       end
     end
