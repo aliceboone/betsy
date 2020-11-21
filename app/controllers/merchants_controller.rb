@@ -1,5 +1,18 @@
 class MerchantsController < ApplicationController
   before_action :find_merchant, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:new, :update, :edit, :destroy]
+
+  def authentication_notice
+    flash[:notice] = "Please log in to perform this action"
+  end
+
+  def log_out
+    flash[:success] = "Successfully logged out"
+  end
+
+  def must_be_logged
+    flash[:error] = "A problem occurred: You must log in to do that"
+  end
 
   def index
     @merchants = Merchant.all
@@ -26,15 +39,6 @@ class MerchantsController < ApplicationController
     session[:merchant_id] = merchant.id
     redirect_to root_path
   end
-
-  # def create
-  #   @merchant = Merchant.new(merchant_params)
-  #   if @merchant.save
-  #     redirect_to merchants_path
-  #   else
-  #     render :new
-  #   end
-  # end
 
   def show
     if @merchant.nil?
@@ -65,18 +69,28 @@ class MerchantsController < ApplicationController
     redirect_to root_path
   end
 
+  def logout
+    if session[:merchant_id]
+      merchant_params
+      unless merchant.nil?
+        session[:merchant_id] = nil
+        log_out
+      else
+        session[:merchant_id] = nil
+      end
+    else
+      authentication_notice
+    end
+    redirect_to root_path
+  end
+
   private
 
   def merchant_params
     params.require(:merchant).permit(:username, :email, :mailing_address, :credit_last_four, :credit_expire)
   end
 
-  private
-
   def find_merchant
     @merchant = Merchant.find_by_id(params[:id])
   end
-
-
-
 end
