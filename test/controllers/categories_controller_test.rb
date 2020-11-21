@@ -2,19 +2,24 @@ require "test_helper"
 
 describe CategoriesController do
 
-  before do
-    Merchant.create!( id: 1,
-                      username: 'Jane Do',
-                      email: 'jdo@somewhere.com',
-                      mailing_address: '1111 3rd Ave NE Seattle WA 98000',
-                      credit_last_four: 1111,
-                      credit_expire: '12/23')
+  let(:category){
+    Category.create!(
+        category_name: 'Drinks'
+    )
+  }
 
-  end
+  let(:category_hash){
+    {
+        product: {
+            category_name: 'Drinks',
+        }
+    }
+  }
 
   describe "new" do
-    it "responds with success" do
+    it "succeeds" do
       get new_category_path
+
       must_respond_with :success
     end
   end
@@ -23,13 +28,14 @@ describe CategoriesController do
     it 'can create a new category' do
 
       expect{
-        post categories_path, params: {category: {category_name:"Face"}}
-      }.must_change 'Category.count', 1
+        post categories_path, params: category_hash
+      }.must_change "Category.count", 1
 
-      new_category = Category.last
+      new_category = Category.find_by(category_name: category_hash[:category][:category_name])
 
       must_respond_with :redirect
-      must_redirect_to category_path(new_category.id)
+      must_redirect_to product_path(new_category.id)
     end
   end
+
 end

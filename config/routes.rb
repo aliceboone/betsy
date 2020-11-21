@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homepages#homepage'
@@ -5,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :order_items, only: [:create]
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: %i[new create]
   end
 
   get '/auth/github', as: 'github_login'
@@ -13,26 +14,20 @@ Rails.application.routes.draw do
   delete '/logout', to: 'merchants#destroy', as: 'logout'
 
   resources :products
-
   resources :merchants
 
-  resources :order_items, only: [:update, :destroy]
+  resources :order_items, only: %i[update destroy]
   patch 'order_items/:id/mark_shipped', to: 'order_items#mark_shipped', as: 'mark_shipped'
 
   get '/orders/cart', to: 'orders#cart', as: 'cart'
 
-  resources :orders, only: [:index, :show, :edit, :update]
+  resources :orders, only: %i[index show edit update]
 
   get '/orders/:id/cart/success', to: 'orders#success', as: 'success'
   patch '/orders/:id/cancel', to: 'orders#cancel', as: 'cancel'
-  
-  resources :reviews, only: [:new, :create]
-  resources :categories, only: [:new, :create, :show, :edit]
 
-  
+  resources :reviews, only: [:create]
+  resources :categories, only: %i[new create show edit]
   resources :order_items
-
   resources :categories
-
 end
-
