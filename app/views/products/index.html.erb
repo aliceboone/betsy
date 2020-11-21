@@ -21,10 +21,10 @@
                     <h5> <%= button_to product.name, product_path(product.id), method: :get, class: "catalog__card-title-button text-left"%> </h5>
                   </section>
                   <div class="catalog__body-text">
-<!--                      $<%#= number_with_precision(product.price, :precision => 2, :delimiter => ',')%>-->
+                      $<%= number_with_precision(product.price, :precision => 2, :delimiter => ',')%>
                   </div>
                   <div class="catalog__body-text">
-<!--                      Rating: <%#= product.average_rating%>/5  (<%#=product.reviews.count%> of reviews)-->
+                    <td><%= product.average_rating.nil? ? nil :product.average_rating.round(2) %></td>
                   </div>
                 </div>
               </div>
