@@ -27,15 +27,6 @@ class MerchantsController < ApplicationController
     redirect_to root_path
   end
 
-  # def create
-  #   @merchant = Merchant.new(merchant_params)
-  #   if @merchant.save
-  #     redirect_to merchants_path
-  #   else
-  #     render :new
-  #   end
-  # end
-
   def show
     if @merchant.nil?
       redirect_to merchants_path
@@ -68,7 +59,7 @@ class MerchantsController < ApplicationController
   private
 
   def merchant_params
-    params.require(:merchant).permit(:username, :email, :mailing_address, :credit_last_four, :credit_expire)
+    params.require(:merchant).permit(:username, :email, :mailing_address, :credit_last_four, :credit_expire, :uid, :provider)
   end
 
   private
@@ -76,6 +67,15 @@ class MerchantsController < ApplicationController
   def find_merchant
     @merchant = Merchant.find_by_id(params[:id])
   end
+
+  # def current
+  #   @current_user = Merchant.find_by(id: session[:merchant_id])
+  #   unless @current_user
+  #     flash[:error] = "You must be logged in to see this page"
+  #     redirect_to root_path
+  #     return
+  #   end
+  # end
 
 
 
