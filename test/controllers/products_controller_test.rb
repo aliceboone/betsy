@@ -134,7 +134,7 @@ describe ProductsController do
       expect(new_product.description).must_equal product_hash[:product][:description]
       expect(new_product.inventory).must_equal product_hash[:product][:inventory]
       expect(new_product.price).must_equal product_hash[:product][:price]
-      expect(new_product.category).must_equal product_hash[:product][:category]
+      expect(new_product.category_ids).must_equal product_hash[:product][:category.id]
 
       must_respond_with :redirect
       must_redirect_to product_path(new_product.id)
@@ -151,18 +151,5 @@ describe ProductsController do
       must_respond_with :redirect
     end
   end
-
-  # describe 'Destroy' do
-  #
-  #   it 'destroys the product instance in database when the product exists, then redirect' do
-  #
-  #     product
-  #
-  #     expect {
-  #       delete product_path(product.id)
-  #     }.must_change "Product.count", -1
-  #     must_respond_with :redirect
-  #   end
-  # end
 end
 

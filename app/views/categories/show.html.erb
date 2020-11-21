@@ -1,6 +1,9 @@
 <main>
   <section>
     <h2>Name: <%= @category.category_name %> </h2>
+    <% @category.products.each do |product| %>
+    <p><%= product.name%></p>
+    <% end %>
     <section>
       <%= link_to "Back to categories", root_path, class: "button" %>
       <%= link_to "Edit", edit_category_path(@category.id), class: "button"%>

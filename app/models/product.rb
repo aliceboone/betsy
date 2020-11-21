@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
-
   belongs_to :merchant
   has_and_belongs_to_many :categories
+  has_many :reviews
 
   validates :name, presence: true, uniqueness: true
   validates :price, presence: true, numericality: {greater_than: 0}
@@ -10,7 +10,17 @@ class Product < ApplicationRecord
   scope :available, -> { where(discontinued: false).where.not(inventory: 0) }
 
   def out_of_stock
-    return self.inventory == 0
+    self.inventory == 0
   end
 
+  def average_rating
+    avg_rating = reviews.where.not(rating: nil).sum(:rating)
+    total_reviews = reviews.count(:rating)
+
+    return nil if total_reviews.zero? || avg_rating.zero?
+
+    avg_rating /= total_reviews
+
+    return avg_rating
+  end
 end

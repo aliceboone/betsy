@@ -11,9 +11,9 @@
 
   <header>
     <div class="d-flex">
-      <div class="mr-auto p-2"><%= link_to "AleBae", root_path, class: "header-logo" %>
+      <div class="mr-auto p-2"><%= link_to "AloeBae", root_path, class: "header-logo" %>
         <section class="header-byline">
-          <p class="lead">Shop for the aloe vera products you look for</p>
+          <p class="lead">Here you can find amazing Aloe Vera products. </p>
         </section>
       </div>
     </div>
@@ -40,7 +40,7 @@
             <div class="dropdown-menu">
               <ul>
                 <% @categories.each do |category| %>
-                  <li><%= category.category_name %></li>
+                  <li><%= link_to category.category_name, category_path(category) %></li>
                 <% end %>
               </ul>
 

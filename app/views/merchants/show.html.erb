@@ -1,14 +1,13 @@
 <main>
   <section>
-    <h2>Username: <%= @merchant.username %> </h2>
-    <p>Email: <%= @merchant.email %></p>
-    <p>Mailing Address:<%= @merchant.mailing_address %> </p>
-    <p>Last four digits of Credit Card:<%= @merchant.credit_last_four%></p> # maybe we
-    <p>Credit Expiration date:<%= @merchant.credit_expire%></p>
-    <section>
-      <%= link_to "Back to Merchants", merchants_path, class: "button" %>
-      <%= link_to "Edit", edit_merchant_path(@merchant.id), class: "button"%>
-      <%= link_to "Delete", merchant_path(@merchant.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"%>
-    </section>
+      <h2>Username: <%= @merchant.username %> </h2>
+      <% if current_user %>
+      <p>Email: <%= @merchant.email %></p>
+      <p>Mailing Address:<%= @merchant.mailing_address %> </p>
+      <section>
+        <%= link_to "Back to Merchants", merchants_path, class: "btn btn-secondary"%>
+        <%= link_to "Edit", edit_merchant_path(@merchant.id), class: "btn btn-secondary"%>
+      </section>
+    <% end %>
   </section>
 </main>
