@@ -87,7 +87,7 @@ class MerchantsController < ApplicationController
   private
 
   def merchant_params
-    params.require(:merchant).permit(:username, :email, :mailing_address, :credit_last_four, :credit_expire)
+    params.require(:merchant).permit(:username, :email, :mailing_address, :credit_last_four, :credit_expire, :uid, :provider)
   end
 
   def find_merchant

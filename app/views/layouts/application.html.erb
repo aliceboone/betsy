@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
   <header>
     <div class="d-flex">
       <div class="mr-auto p-2"><%= link_to "AleBae", root_path, class: "header-logo" %>
@@ -17,19 +18,19 @@
       </div>
     </div>
     <section class="inline-navigation">
-      <div class="collapse navbar-collapse show">
-
         <ul class="navbar-nav mb-auto mt-0 ml-auto mr-auto">
           <li class="nav-item">
             <i class="fa fa-custom fa-th">
               <%= link_to "All products", products_path, class: "nav-link-custom" %>
             </i>
           </li>
+
           <li class="nav-item">
             <i class="fa fa-custom fa-users">
               <%= link_to "All merchants", merchants_path, class: "nav-link-custom" %>
             </i>
           </li>
+
           <li class="nav-item dropdown">
             <i class="fa fa-custom fa-sitemap">
               <a class="nav-link-custom" href="#" >
@@ -42,6 +43,7 @@
                   <li><%= category.category_name %></li>
                 <% end %>
               </ul>
+
             </div>
           </li>
         <% if session[:merchant_id] %>
@@ -72,6 +74,7 @@
       </div>
     </section>
   </header>
+
   <body>
     <%= yield %>
   </body>
