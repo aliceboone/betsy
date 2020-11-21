@@ -1,49 +1,26 @@
 class ProductsController < ApplicationController
 
   before_action :find_product, only: [:destroy, :update, :edit, :show ]
-  # before_action :require_login, only: [:new, :create, :update, :edit, :destroy]
-
-  # Helper Methods
-  def not_found_notice
-    flash[:notice] = "This product does not exist."
-    redirect_to products_path
-  end
-
-  def not_saved_notice
-    flash.now[:notice] = "Could not create"
-  end
-
-  def saved_notice
-    flash[:success] = "Successfully created"
-  end
-
-  def update_notice
-    flash[:success] = "Successfully updated"
-  end
-
-  def destroyed_notice
-    flash[:success] = "Successfully destroyed"
-  end
-
-  def not_sell
-    flash[:error] = " You don't sell this product"
-  end
+  before_action :require_login, only: [:new, :create, :update, :edit, :destroy]
 
   def not_in_stock
-  flash[:success] = " #{@product.name} out of stock! "
+    flash[:success] = " #{@product.name} out of stock! "
   end
 
-  #############################################################################################
+  def discontinued_notice
+    flash[:success] = " #{@product.name} is discontinued! "
+  end
+
 
   def index
     if params[:category_name]
-      @products = Category.find_by(category_name: params[:category_name]).products
+      @products = Category.find_by(category_name: params[:category_name]).products.available
       @all_categories = params[:category_name]
     elsif params[:username]
-      @products = Merchant.find_by(username: params[:username]).products
+      @products = Merchant.find_by(username: params[:username]).products.available
       @all_categories = 'Products by #params[:username]'
     else
-      @products = Product.all
+      @products = Product.available
       @all_categories = 'all products'
     end
   end
@@ -87,28 +64,23 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    if @product.destroy
-      destroyed_notice
+    if @product.update_attributes(discontinued: true)
+      discontinued_notice
       redirect_to products_path
       return
     end
   end
 
   def out_of_stock
-    if @product.Merchant != current_user
-      not_sell
-      redirect_to root_path
-    else
-      @product.out_of_stock!
-      not_in_stock
-      redirect_to root_path
-    end
+    @product.out_of_stock!
+    not_in_stock
+    redirect_to root_path
   end
 
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :inventory, :price, :photo, :merchant_id, :category)
+    params.require(:product).permit(:name, :description, :inventory, :price, :photo, :merchant_id, category_ids: [])
   end
 
   def find_product

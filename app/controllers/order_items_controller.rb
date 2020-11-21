@@ -1,5 +1,6 @@
 class OrderItemsController < ApplicationController
   before_action :require_cart, only: [:create]
+
   def index
   end
 

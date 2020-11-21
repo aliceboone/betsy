@@ -15,6 +15,7 @@ CSV.foreach(MERCHANT_FILE, :headers => true) do |row|
   successful = merchant.save
   if !successful
     merchant_failures << merchant
+    # puts merchant.errors.full_messages
     puts "Failed to save work: #{merchant.inspect}"
   else
     merchants << merchant
@@ -24,8 +25,6 @@ end
 
 puts "Added #{Merchant.count} merchant records"
 puts "#{merchant_failures.length} merchant failed to save"
-
-
 
 ORDER_FILE = Rails.root.join('db', 'orders_seeds.csv')
 puts "Loading raw work data from #{ORDER_FILE}"
@@ -64,7 +63,6 @@ CSV.foreach(PRODUCT_FILE, :headers => true) do |row|
   product.description = row['description']
   product.inventory = row['inventory']
   product.price = row['price']
-  product.category = row['category']
   product.photo = row['photo']
   product.rating = row['rating']
   successful = product.save!
@@ -78,3 +76,22 @@ end
 
 puts "Added #{Product.count} product records"
 puts "#{product_failures.length} product failed to save"
+
+CATEGORY_FILE = Rails.root.join('db', 'categories_seeds.csv')
+puts "Loading raw work data from #{CATEGORY_FILE}"
+
+category_failures = []
+CSV.foreach(CATEGORY_FILE, :headers => true) do |row|
+  category = Category.new
+  category.category_name = row['category_name']
+  successful = category.save!
+  if !successful
+    category_failures << category
+    puts "Failed to save work: #{category.inspect}"
+  else
+    puts "Created work: #{category.inspect}"
+  end
+end
+
+puts "Added #{Category.count} category records"
+puts "#{category_failures.length} category failed to save"
