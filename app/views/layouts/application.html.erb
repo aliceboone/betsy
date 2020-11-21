@@ -10,20 +10,14 @@
   </head>
 
   <header>
+    <div class="d-flex">
+      <div class="mr-auto p-2"><%= link_to "AleBae", root_path, class: "header-logo" %>
+        <section class="header-byline">
+          <p class="lead">Shop for the aloe vera products you look for</p>
+        </section>
+      </div>
+    </div>
     <section class="inline-navigation">
-
-      <div class="collapse navbar-collapse">
-
-      <div class="collapse navbar-collapse">
-
-        <div class="d-flex">
-          <div class="mr-auto p-2"><%= link_to "AleBae", root_path, class: "header-logo" %>
-            <section class="header-byline">
-              <p class="lead">Shop for the aloe vera products you look for</p>
-            </section>
-<!--          </div>-->
-        </div>
-
         <ul class="navbar-nav mb-auto mt-0 ml-auto mr-auto">
           <li class="nav-item">
             <i class="fa fa-custom fa-th">
@@ -44,9 +38,14 @@
               </a>
             </i>
             <div class="dropdown-menu">
+              <ul>
+                <% @categories.each do |category| %>
+                  <li><%= category.category_name %></li>
+                <% end %>
+              </ul>
+
             </div>
           </li>
-
         <% if session[:merchant_id] %>
           <li class="nav-item">
             <% @current_user = Merchant.find_by(id: session[:merchant_id]) %>
@@ -56,14 +55,14 @@
           </li>
             <li class="nav-item">
               <i class="fa fa-custom fa-arrow-circle-left">
-              <%= link_to "Log out", logout_path, method: "delete", class: "nav-link-custom" %></li>
-            </i>
+                <%= link_to "Log out", logout_path, method: "delete", class: "nav-link-custom" %>
+              </i>
             </li>
           <% else %>
             <li class="nav-item">
               <i class="fa fa-custom fa-arrow-circle-right">
-          <li><%= link_to "Login with Github", github_login_path, method: "post", class: "nav-link-custom"%></li>
-            </i>
+                <%= link_to "Login with Github", github_login_path, method: "post", class: "nav-link-custom"%>
+              </i>
             </li>
         <% end %>
         <li class="nav-item">

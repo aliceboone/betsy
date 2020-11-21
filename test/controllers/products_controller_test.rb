@@ -1,6 +1,12 @@
 require "test_helper"
 
 describe ProductsController do
+  let (:category){
+    Category.create!(
+        id: 1,
+        category_name: 'Drinks')
+  }
+
   let (:merchant){
     Merchant.create!(
         id: 1,
@@ -17,7 +23,7 @@ describe ProductsController do
         description: 'Aloe Vera multi symptom relief juice',
         inventory: 5,
         price: 7.00,
-        category:'Drinks',
+        category_ids: [],
         photo: 'www.allaboutaloe.com/aloe_juice.png',
         merchant_id: merchant.id
     )
@@ -30,7 +36,7 @@ describe ProductsController do
             description: 'Aloe Vera multi symptom relief juice',
             inventory: 10,
             price: 20.00,
-            category:'face',
+            category_ids: [],
             photo: 'www.allaboutaloe.com/aloe_face_cream.png',
             merchant_id: merchant.id
         }
@@ -146,17 +152,17 @@ describe ProductsController do
     end
   end
 
-  describe 'Destroy' do
-
-    it 'destroys the product instance in database when the product exists, then redirect' do
-
-      product
-
-      expect {
-        delete product_path(product.id)
-      }.must_change "Product.count", -1
-      must_respond_with :redirect
-    end
-  end
+  # describe 'Destroy' do
+  #
+  #   it 'destroys the product instance in database when the product exists, then redirect' do
+  #
+  #     product
+  #
+  #     expect {
+  #       delete product_path(product.id)
+  #     }.must_change "Product.count", -1
+  #     must_respond_with :redirect
+  #   end
+  # end
 end
 

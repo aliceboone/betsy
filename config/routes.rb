@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   
   resources :order_items
 
-  resources :categories, only: [:new, :create, :show]
+  resources :categories
 
 end
 
