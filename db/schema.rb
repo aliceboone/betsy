@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_20_004108) do
+ActiveRecord::Schema.define(version: 2020_11_21_010623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_11_20_004108) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "merchant_id"
+    t.boolean "discontinued", default: false
     t.index ["merchant_id"], name: "index_products_on_merchant_id"
   end
 

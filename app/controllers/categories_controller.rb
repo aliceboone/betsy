@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
-   # before_action :require_login, only: [:new]
-   before_action :load_category, only: [:show, :edit]
+   before_action :require_login, except: [:show]
+   before_action :find_category, only: [:show, :edit, :destroy]
 
   def saved_notice
     flash[:success] = "Successfully created the #{@category.category_name}"
@@ -40,6 +40,14 @@ class CategoriesController < ApplicationController
     end
   end
 
+   def destroy
+     if @category.destroy
+       destroyed_notice
+       # I can redirect to category_path later when i have a index page
+       redirect_to root_path
+       return
+     end
+   end
 
   private
 
@@ -47,7 +55,7 @@ class CategoriesController < ApplicationController
     params.require(:category).permit(:category_name)
   end
 
-   def load_category
+   def find_category
      @category = Category.find_by(id: params[:id])
      if @category.nil?
        not_found_notice
