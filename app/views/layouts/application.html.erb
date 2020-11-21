@@ -63,17 +63,17 @@
               <%= link_to @current_user.username, merchant_path(session[:merchant_id]), class: "nav-link-custom"%>
             </i>
           </li>
-            <li class="nav-item">
-              <i class="fa fa-custom fa-arrow-circle-left">
-                <%= link_to "Log out", logout_path, method: "delete", class: "nav-link-custom" %>
-              </i>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <i class="fa fa-custom fa-arrow-circle-right">
-                <%= link_to "Login with Github", github_login_path, method: "post", class: "nav-link-custom"%>
-              </i>
-            </li>
+          <li class="nav-item">
+            <i class="fa fa-custom fa-arrow-circle-left">
+              <%= link_to "Log out", logout_path, method: "delete", class: "nav-link-custom" %>
+            </i>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <i class="fa fa-custom fa-arrow-circle-right">
+              <%= link_to "Login with Github", github_login_path, method: "post", class: "nav-link-custom"%>
+            </i>
+          </li>
         <% end %>
         <li class="nav-item">
           <i class="fa fa-custom fa-shopping-cart">
