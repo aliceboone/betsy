@@ -49,7 +49,9 @@ describe ReviewsController do
   end
 
   describe "create" do
+
     it 'can create a new review' do
+      skip
 
       expect{
         post reviews_path, params: review_hash
