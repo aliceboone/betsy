@@ -10,3 +10,6 @@ jointhree:
 joinfour:
   product_id: 4
   category_id: 3
+joinfive:
+  product_id: 4
+  category_id: 2
