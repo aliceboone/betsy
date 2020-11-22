@@ -22,7 +22,7 @@ describe OrdersController do
                   zip: 111111
   }
 
-  let (:edit_order_hash)
+  let(:edit_order_hash)
     {
         order: {
             email: 'happy@strong.com',
@@ -34,11 +34,9 @@ describe OrdersController do
         }
     }
 
-  let (:order_item)
-  {
-    OrderItem.create! (quantity: 3,
-        product_id: product.id,
-        order_id: order.id )
+  let(:order_item) {
+    OrderItem.create! product_id: product.id,
+        order_id: order.id
   }
 
 
@@ -53,12 +51,13 @@ describe OrdersController do
 
   describe 'Show' do
     it 'can get a valid order' do
+      skip
       get order_path(order.id)
       must_respond_with :success
     end
 
     it 'will redirect for an invalid order' do
-
+      skip
       get order_path(-1)
       must_respond_with :redirect
     end
