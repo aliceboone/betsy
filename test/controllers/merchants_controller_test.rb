@@ -2,6 +2,28 @@ require 'test_helper'
 
 describe MerchantsController do
 
+  let(:merchant){
+    Merchant.create!(
+        username: 'Aya Lynn',
+        email: 'ap@somewhere.com',
+        mailing_address: '1111 3rd Ave NE Seattle WA 98000',
+        credit_last_four: '1111',
+        credit_expire: '12/23'
+    )
+  }
+
+  let (:merchant_hash) {
+    {
+      merchant: {
+          username: 'Allen Petter',
+          email: 'ap@somewhere.com',
+          mailing_address: '1111 3rd Ave NE Seattle WA 98000',
+          credit_last_four: '1111',
+          credit_expire: '12/23'
+      }
+    }
+  }
+
   describe 'Index' do
     it 'should get index' do
       get '/merchants'
@@ -10,15 +32,6 @@ describe MerchantsController do
   end
 
   describe 'Show' do
-    let(:merchant){
-        Merchant.create!(
-          username: 'Aya Lynn',
-          email: 'ap@somewhere.com',
-          mailing_address: '1111 3rd Ave NE Seattle WA 98000',
-          credit_last_four: '1111',
-          credit_expire: '12/23'
-      )
-    }
 
     it 'can get a valid merchant' do
       get merchant_path(merchant.id)
@@ -30,52 +43,36 @@ describe MerchantsController do
       must_respond_with :redirect
     end
   end
-  
-  describe 'Create' do
-    it 'can create a new merchant' do
-      merchant_hash = {
-        merchant: {
-          username: 'Allen Petter',
-          email: 'ap@somewhere.com',
-          mailing_address: '1111 3rd Ave NE Seattle WA 98000',
-          credit_last_four: '1111',
-          credit_expire: '12/23'
-        },
-      }
 
+  describe 'Create' do
+
+    it 'can create a new merchant' do
+      new_merchant = Merchant.new(username: 'test')
       expect{
-        post merchants_path, params: merchant_hash
+        perform_login(new_merchant)
       }.must_change 'Merchant.count', 1
 
+      must_redirect_to root_path
+      expect(session[:merchant_id]).must_equal Merchant.last.id
     end
 
     it 'cannot create a new merchant if the form data violates the validations for merchant' do
       # this can be checked after making the validations
-        merchant_hash = {
-          merchant: {
-            email: 'ap@somewhere.com',
-            mailing_address: '1111 3rd Ave NE Seattle WA 98000',
-            credit_last_four: '1111',
-            credit_expire: '12/23'
-          },
-        }
+      new_merchant = Merchant.new(username: nil)
+      expect{
+        perform_login(new_merchant)
+      }.wont_change 'Merchant.count'
 
-        expect{
-          post merchants_path, params: merchant_hash
-        }.wont_change 'Merchant.count'
-
-      end
+      must_redirect_to root_path
+    end
   end
-  
+
   describe 'Edit' do
+    before do
+      perform_login
+    end
+
     it 'responds with success when getting the edit page for an existing, valid merchant' do
-      merchant = Merchant.create!(
-        username: 'Aya Lynn',
-        email: 'ap@somewhere.com',
-        mailing_address: '1111 3rd Ave NE Seattle WA 98000',
-        credit_last_four: '1111',
-        credit_expire: '12/23'
-      )
 
       merchant_id = merchant.id
       get edit_merchant_path(merchant_id)
@@ -84,75 +81,37 @@ describe MerchantsController do
   end
 
   describe 'Update' do
+
     before do
-      @merchant = Merchant.create!(
-        username: 'Aya Lynn',
-        email: 'ap@somewhere.com',
-        mailing_address: '1111 3rd Ave NE Seattle WA 98000',
-        credit_last_four: '1111',
-        credit_expire: '12/23'
-      )
-      @update_merchant_hash =
-        {
-          merchant: {
-            username: 'Ayaan Loid',
-            email: 'ap@somewhere.com',
-            mailing_address: '1111 3rd Ave NE Seattle WA 98000',
-            credit_last_four: '1111',
-            credit_expire: '12/23'
-          }
-        }
+      perform_login
     end
 
-
     it 'can updates an existing merchant with valid data accurately and redirect' do
-      merchant_id = @merchant.id
+      new_merchant = merchant
+
       expect {
-        patch merchant_path(merchant_id), params: @update_merchant_hash
+        patch merchant_path(new_merchant.id), params: merchant_hash
       }.wont_change 'Merchant.count'
 
-      must_respond_with :redirect
-      merchant = Merchant.find_by(id: merchant_id)
-      expect(merchant.username).must_equal @update_merchant_hash[:merchant][:username]
-      expect(merchant.email).must_equal @update_merchant_hash[:merchant][:email]
-      expect(merchant.mailing_address).must_equal @update_merchant_hash[:merchant][:mailing_address]
-      expect(merchant.credit_last_four).must_equal @update_merchant_hash[:merchant][:credit_last_four]
-      expect(merchant.credit_expire).must_equal @update_merchant_hash[:merchant][:credit_expire]
+      new_merchant.reload
 
+      expect(new_merchant.username).must_equal merchant_hash[:merchant][:username]
+      expect(new_merchant.email).must_equal merchant_hash[:merchant][:email]
+
+      must_respond_with :redirect
+      must_redirect_to merchants_path
     end
 
     it 'does not update any merchant if given an invalid id and redirect to merchants path' do
       expect {
-        get edit_merchant_path(-1), params: @update_merchant_hash
+
+        get edit_merchant_path(-1), params: merchant_hash
       }.wont_change "Merchant.count"
-      must_redirect_to merchants_path
-    end
-  end
-
-  describe 'Destroy' do
-    before do
-      @merchant = Merchant.create!(
-        username: 'Ama Poll',
-        email: 'apo@somewhere.com',
-        mailing_address: '1111 3rd Ave NE Seattle WA 98000',
-        credit_last_four: '1111',
-        credit_expire: '12/23',
-        uid: 123456,
-        provider: 'github'
-      )
-    end
-    
-    it 'destroys the merchant instance in database when the merchant exists, then redirect' do
-
-      id = @merchant.id
-
-      expect {
-        delete merchant_path(id)
-      }.must_change 'Merchant.count', -1
 
       must_respond_with :redirect
     end
   end
+
   describe "auth_callback" do
     it "logs in an existing merchant and redirects to the root route" do
       # Count the users, to make sure we're not (for example) creating
@@ -195,5 +154,4 @@ describe MerchantsController do
 
     end
   end
-  
 end
