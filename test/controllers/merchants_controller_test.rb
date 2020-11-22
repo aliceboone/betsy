@@ -104,10 +104,8 @@ describe MerchantsController do
 
     it 'does not update any merchant if given an invalid id and redirect to merchants path' do
       expect {
-
         get edit_merchant_path(-1), params: merchant_hash
       }.wont_change "Merchant.count"
-
       must_respond_with :redirect
     end
   end
