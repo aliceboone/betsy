@@ -1,0 +1,12 @@
+joinone:
+  product_id: 1
+  category_id: 1
+jointwo:
+  product_id: 2
+  category_id: 2
+jointhree:
+  product_id: 3
+  category_id: 2
+joinfour:
+  product_id: 4
+  category_id: 3

@@ -136,16 +136,20 @@ describe MerchantsController do
         email: 'apo@somewhere.com',
         mailing_address: '1111 3rd Ave NE Seattle WA 98000',
         credit_last_four: '1111',
-        credit_expire: '12/23'
+        credit_expire: '12/23',
+        uid: 123456,
+        provider: 'github'
       )
     end
     
     it 'destroys the merchant instance in database when the merchant exists, then redirect' do
+
       id = @merchant.id
 
       expect {
         delete merchant_path(id)
       }.must_change 'Merchant.count', -1
+
       must_respond_with :redirect
     end
   end
