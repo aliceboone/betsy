@@ -1,6 +1,8 @@
 class MerchantsController < ApplicationController
+
   before_action :find_merchant, only: [:show, :edit, :update, :destroy]
   before_action :require_login, only: [:new, :update, :edit, :destroy]
+
 
   def authentication_notice
     flash[:notice] = "Please log in to perform this action"

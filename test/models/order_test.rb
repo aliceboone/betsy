@@ -1,7 +1,6 @@
 require "test_helper"
 
 describe Order do
-
   # has_many :order_items
   describe 'relations' do
     describe 'order_items' do
@@ -15,5 +14,4 @@ describe Order do
   # custom method add_product(product)
   # describe 'add_product' do
   # end
-
 end
