@@ -2,6 +2,16 @@ require "test_helper"
 
 describe ReviewsController do
 
+  let (:merchant){
+    Merchant.create!(
+        id: 1,
+        username: 'Jane Do',
+        email: 'jdo@somewhere.com',
+        mailing_address: '1111 3rd Ave NE Seattle WA 98000',
+        credit_last_four: 1111,
+        credit_expire: '12/23' )
+  }
+
   let(:product){
     Product.create!(
         name: 'Aloe face cream',
@@ -10,7 +20,7 @@ describe ReviewsController do
         price: 20.00,
         category_ids: [],
         photo: 'www.allaboutaloe.com/aloe_juice.png',
-
+        merchant_id: merchant.id
     )
   }
   let(:review){
@@ -33,7 +43,7 @@ describe ReviewsController do
 
     describe "new" do
       it "can successfully retrieve new review page for valid product id" do
-        get new_review_path(product_id:product.id)
+        get product_path(product)
         assert_response :success
       end
     end
@@ -50,7 +60,8 @@ describe ReviewsController do
         new_review = Review.find_by(rating: review_hash[:review][:rating])
 
         must_respond_with :redirect
-        must_redirect_to product_review_path(new_review.id)
+        must_redirect_to product_path(new_review.product_id)
+
       end
 
       it 'cannot create a new review if the form data violates the validations for review' do

@@ -42,7 +42,7 @@ class ActiveSupport::TestCase
 
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(mock_auth_hash(merchant))
     get create_merchant_path
-
+    merchant = Merchant.find_by(uid: merchant.uid)
     return merchant
   end
 
