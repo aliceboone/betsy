@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
-  before_action :ensure_cart, :set_categories, :set_merchants
 
+  before_action :ensure_cart, :set_categories, :set_merchants
+  before_action :current_user
 
   # Helper Methods
   def not_found_notice
