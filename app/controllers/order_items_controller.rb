@@ -13,7 +13,7 @@ class OrderItemsController < ApplicationController
   end
 
   def create
-    chosen_product = Product.find(params[:product_id])
+    chosen_product = Product.find_by_id(params[:product_id])
     if chosen_product.nil?
       flash[:error] = "Invalid product"
       redirect_to root_path

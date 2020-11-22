@@ -1,28 +1,28 @@
-item-one:
+item_one:
   product_id: 1
   order_id: 1
   quantity: 5
-item-two:
+item_two:
   product_id: 1
   order_id: 3
   quantity: 6
-item-three:
+item_three:
   product_id: 2
   order_id: 2
   quantity: 10
-item-four:
+item_four:
   product_id: 3
   order_id: 5
   quantity: 20
-item-five:
+item_five:
   product_id: 4
   order_id: 5
   quantity: 25
-item-six:
+item_six:
   product_id: 5
   order_id: 5
   quantity: 1
-item-seven:
+item_seven:
   product_id: 6
   order_id: 4
   quantity: 9
