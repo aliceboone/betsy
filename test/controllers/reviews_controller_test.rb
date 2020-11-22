@@ -41,37 +41,36 @@ describe ReviewsController do
     }
   }
 
-    describe "new" do
-      it "can successfully retrieve new review page for valid product id" do
-        get product_path(product)
-        assert_response :success
-      end
+  describe "new" do
+    it "can successfully retrieve new review page for valid product id" do
+      get product_path(product)
+      assert_response :success
     end
+  end
 
   describe "create" do
+    it 'can create a new review' do
 
-    describe 'Create' do
-      it 'can create a new review' do
+      expect{
+        post reviews_path, params: review_hash
+      }.must_change "Review.count", 1
 
-        expect{
-          post reviews_path, params: review_hash
-        }.must_change "Review.count", 1
+      new_review = reviews(:reviewone)
 
-        new_review = Review.find_by(rating: review_hash[:review][:rating])
+      p new_review.product_id
 
-        must_respond_with :redirect
-        must_redirect_to product_path(new_review.product_id)
 
-      end
+      must_respond_with :redirect
+      must_redirect_to product_path(new_review.product_id)
+    end
 
-      it 'cannot create a new review if the form data violates the validations for review' do
-        # this can be checked after making the validations
-        review_hash[:review][:rating] = nil
+    it 'cannot create a new review if the form data violates the validations for review' do
+      # this can be checked after making the validations
+      review_hash[:review][:rating] = nil
 
-        expect{
-          post reviews_path, params: review_hash
-        }.wont_change 'Review.count'
-      end
+      expect{
+        post reviews_path, params: review_hash
+      }.wont_change 'Review.count'
     end
   end
 end
