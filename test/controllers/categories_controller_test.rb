@@ -10,16 +10,19 @@ describe CategoriesController do
 
   let(:category_hash){
     {
-        product: {
+        category: {
             category_name: 'Drinks',
         }
     }
   }
 
   describe "new" do
-    it "succeeds" do
+    it "can get the new task page" do
+
+      # Act
       get new_category_path
 
+      # Assert
       must_respond_with :success
     end
   end
@@ -34,8 +37,7 @@ describe CategoriesController do
       new_category = Category.find_by(category_name: category_hash[:category][:category_name])
 
       must_respond_with :redirect
-      must_redirect_to product_path(new_category.id)
+      must_redirect_to category_path(new_category.id)
     end
   end
-
 end

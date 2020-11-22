@@ -80,6 +80,10 @@ describe ProductsController do
   end
 
   describe 'Create' do
+    before do
+      perform_login
+    end
+
     it 'can create a new product' do
 
       expect{
@@ -106,6 +110,10 @@ describe ProductsController do
   end
 
   describe 'Edit' do
+    before do
+      perform_login
+    end
+
     it 'responds with success when getting the edit page for an existing, valid product' do
 
       product
@@ -117,6 +125,9 @@ describe ProductsController do
   end
 
   describe 'Update' do
+    before do
+      perform_login
+    end
 
     it 'can updates an existing product with valid data accurately and redirect' do
       # Arrange
@@ -134,7 +145,7 @@ describe ProductsController do
       expect(new_product.description).must_equal product_hash[:product][:description]
       expect(new_product.inventory).must_equal product_hash[:product][:inventory]
       expect(new_product.price).must_equal product_hash[:product][:price]
-      expect(new_product.category_ids).must_equal product_hash[:product][:category.id]
+      expect(new_product.category_ids).must_equal product_hash[:product][:category_ids]
 
       must_respond_with :redirect
       must_redirect_to product_path(new_product.id)
@@ -142,7 +153,6 @@ describe ProductsController do
 
     it 'does not update any product if given an invalid id and redirect to products path' do
       # Act
-      #
       expect {
         patch product_path(-1), params: product_hash
       }.wont_change 'Product.count'
@@ -152,4 +162,3 @@ describe ProductsController do
     end
   end
 end
-
