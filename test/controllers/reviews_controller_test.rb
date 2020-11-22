@@ -57,10 +57,7 @@ describe ReviewsController do
         post reviews_path, params: review_hash
       }.must_change "Review.count", 1
 
-      new_review = reviews(:reviewone)
-
-      p new_review.product_id
-
+      new_review = Review.find_by(rating: review_hash[:review][:rating])
 
       must_respond_with :redirect
       must_redirect_to product_path(new_review.product_id)
