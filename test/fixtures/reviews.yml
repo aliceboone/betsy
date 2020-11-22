@@ -1,0 +1,16 @@
+reviewone:
+  rating: 2
+  content: "this is a review of product 1"
+  product_id: 1
+reviewtwo:
+  rating: 4
+  content: "this is a review of product 1"
+  product_id: 1
+reviewthree:
+  rating: 5
+  content: "this is a review of product 2"
+  product_id: 2
+reviewfour:
+  rating: 1
+  content: "this is a review of product 4"
+  product_id: 4
