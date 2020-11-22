@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Betsy</title>
+  <title>AloeBae</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
+
 <header>
   <div class="d-flex">
-    <div class="mr-auto p-2"><%= link_to "AloeBae", root_path, class: "header-logo" %>
+    <div class="mr-auto p-2"><h1><%= link_to "AloeBae", root_path, class: "header-logo" %></h1>
       <section class="header-byline">
-        <p class="lead">Shop for the aloe vera products you look for</p>
+        <p class="lead">a one stop shop for all your aloe vera favorites</p>
       </section>
     </div>
   </div>
@@ -48,7 +49,7 @@
           </ul>
         </div>
       </li>
-      <% if @current_user%>
+      <% if @current_user %>
         <li class="nav-item">
           <i class="fa fa-custom fa-user-circle">
             <%= link_to @current_user.username, merchant_path(session[:merchant_id]), class: "nav-link-custom"%>
