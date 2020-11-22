@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :homepages, only: [:index]
 
   resources :products do
-    resources :order_items, only: [:create]
+    resources :order_items, only: [:create, :destroy]
     resources :reviews, only: %i[new create]
   end
 

@@ -1,92 +1,83 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Betsy</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <header>
-    <div class="d-flex">
-      <div class="mr-auto p-2"><%= link_to "AloeBae", root_path, class: "header-logo" %>
-        <section class="header-byline">
-          <p class="lead">Here you can find amazing Aloe Vera products. </p>
-        </section>
-      </div>
+<head>
+  <title>Betsy</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<header>
+  <div class="d-flex">
+    <div class="mr-auto p-2"><%= link_to "AloeBae", root_path, class: "header-logo" %>
+      <section class="header-byline">
+        <p class="lead">Shop for the aloe vera products you look for</p>
+      </section>
     </div>
-    <section class="inline-navigation">
-      
-      <div class="collapse navbar-collapse">
-        <div class="d-flex">
-          <div class="mr-auto p-2"><%= link_to "AloeBae", root_path, class: "header-logo" %>
-            <section class="header-byline">
-              <p class="lead">Shop for the aloe vera products you look for</p>
-            </section>
+  </div>
+  <section class="inline-navigation">
+    <!--      <div class="collapse navbar-collapse">-->
+    <!--        <div class="d-flex">-->
+    <!--          <div class="mr-auto p-2"><%#= link_to "AloeBae", root_path, class: "header-logo" %>-->
+    <!--            <section class="header-byline">-->
+    <!--              <p class="lead">Shop for the aloe vera products you look for</p>-->
+    <!--            </section>-->
+    <!--        </div>-->
+    <ul class="navbar-nav mb-auto mt-0 ml-auto mr-auto">
+      <li class="nav-item">
+        <i class="fa fa-custom fa-th">
+          <%= link_to "All products", products_path, class: "nav-link-custom" %>
+        </i>
+      </li>
+      <li class="nav-item">
+        <i class="fa fa-custom fa-users">
+          <%= link_to "All merchants", merchants_path, class: "nav-link-custom" %>
+        </i>
+      </li>
+      <li class="nav-item dropdown">
+        <i class="fa fa-custom fa-sitemap">
+          <a class="nav-link-custom" href="#" >
+            Categories
+          </a>
+        </i>
+        <div class="dropdown-menu">
+          <ul>
+            <% @categories.each do |category| %>
+              <li><%= category.category_name %></li>
+            <% end %>
+          </ul>
         </div>
-
-        <ul class="navbar-nav mb-auto mt-0 ml-auto mr-auto">
-          <li class="nav-item">
-            <i class="fa fa-custom fa-th">
-              <%= link_to "All products", products_path, class: "nav-link-custom" %>
-            </i>
-          </li>
-
-          <li class="nav-item">
-            <i class="fa fa-custom fa-users">
-              <%= link_to "All merchants", merchants_path, class: "nav-link-custom" %>
-            </i>
-          </li>
-
-          <li class="nav-item dropdown">
-            <i class="fa fa-custom fa-sitemap">
-              <a class="nav-link-custom" href="#" >
-                Categories
-              </a>
-            </i>
-            <div class="dropdown-menu">
-              <ul>
-                <% @categories.each do |category| %>
-                  <li><%= link_to category.category_name, category_path(category) %></li>
-                <% end %>
-              </ul>
-
-            </div>
-          </li>
-        <% if session[:merchant_id] %>
-          <li class="nav-item">
-            <% @current_user = Merchant.find_by(id: session[:merchant_id]) %>
-            <i class="fa fa-custom fa-user-circle">
-              <%= link_to @current_user.username, merchant_path(session[:merchant_id]), class: "nav-link-custom"%>
-            </i>
-          </li>
-            <li class="nav-item">
-              <i class="fa fa-custom fa-arrow-circle-left">
-                <%= link_to "Log out", logout_path, method: "delete", class: "nav-link-custom" %>
-              </i>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <i class="fa fa-custom fa-arrow-circle-right">
-                <%= link_to "Login with Github", github_login_path, method: "post", class: "nav-link-custom"%>
-              </i>
-            </li>
-        <% end %>
+      </li>
+      <% if @current_user%>
         <li class="nav-item">
-          <i class="fa fa-custom fa-shopping-cart">
-            <%= link_to "Cart", cart_path, class: "nav-link-custom" %>
+          <i class="fa fa-custom fa-user-circle">
+            <%= link_to @current_user.username, merchant_path(session[:merchant_id]), class: "nav-link-custom"%>
           </i>
         </li>
-        </ul>
-      </div>
-    </section>
-  </header>
-
-  <body>
-    <%= yield %>
-  </body>
+        <li class="nav-item">
+          <i class="fa fa-custom fa-arrow-circle-left">
+            <%= link_to "Log out", logout_path, method: "delete", class: "nav-link-custom" %>
+          </i>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <i class="fa fa-custom fa-arrow-circle-right">
+            <%= link_to "Login with Github", github_login_path, method: "post", class: "nav-link-custom"%>
+          </i>
+        </li>
+      <% end %>
+      <li class="nav-item">
+        <i class="fa fa-custom fa-shopping-cart">
+          <%= link_to "Cart", cart_path, class: "nav-link-custom" %>
+        </i>
+      </li>
+    </ul>
+    </div>
+  </section>
+</header>
+<body>
+<%= yield %>
+</body>
 <div class="container">
   <div class="row">
     <div class="col-md-3 mx-auto">
@@ -98,7 +89,7 @@
       CONTACT
       <hr>
       <p class="footer_text">
-       ADA COHORT 14 <br>
+        ADA COHORT 14 <br>
         SEATTLE, WA </p>
     </div>
     <div class="col-3 mx-auto">

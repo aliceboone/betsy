@@ -1,10 +1,10 @@
-order-one:
+order_one:
   status: pending
-order-two:
+order_two:
   status: pending
-order-three:
+order_three:
   status: pending
-order-four:
+order_four:
   status: pending
-order-five:
+order_five:
   status: pending
