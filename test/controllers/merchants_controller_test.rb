@@ -45,17 +45,6 @@ describe MerchantsController do
   end
 
   describe 'Create' do
-
-    it 'can create a new merchant' do
-      new_merchant = Merchant.new(username: 'test')
-      expect{
-        perform_login(new_merchant)
-      }.must_change 'Merchant.count', 1
-
-      must_redirect_to root_path
-      expect(session[:merchant_id]).must_equal Merchant.last.id
-    end
-
     it 'cannot create a new merchant if the form data violates the validations for merchant' do
       # this can be checked after making the validations
       new_merchant = Merchant.new(username: nil)

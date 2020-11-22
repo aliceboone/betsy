@@ -1,0 +1,12 @@
+reviewone:
+  product_id: 1
+  content: "this is a review"
+  rating: 3
+reviewtwo:
+  product_id: 1
+  content: "this is a review"
+  rating: 2
+reviewthree:
+  product_id: 2
+  content: "this is a review"
+  rating: 1
