@@ -26,7 +26,13 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order_items = @order.order_items
+    if @order.order_items.nil?
+      flash[:error] = "There are no products in your cart"
+      redirect_to root_path
+    else
+      @order_items = @order.order_items
+    end
+
     if @order.nil?
       redirect_to orders_path
       return
