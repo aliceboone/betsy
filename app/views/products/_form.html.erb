@@ -1,56 +1,62 @@
- <main><% if @product.errors.any? %>
-      <ul class="errors">
-        <% @product.errors.each do |column, message| %>
-          <li>
-            <strong><%= column.capitalize %></strong> <%= message %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-
-    <section>
-      <%= form_with model: @product do |f|  %>
-
-        <%= f.hidden_field :merchant_id, value: session[:merchant_id] %>
-
-        <div class="form-group">
-          <%= f.label :name %>
-          <%= f.text_field :name, class: 'form-control'%>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :description %>
-          <%= f.text_field :description, class: 'form-control'%>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :price %>
-          <%= f.text_field :price, class: 'form-control'%>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :inventory %>
-          <%= f.text_field :inventory, class: 'form-control'%>
-        </div>
-
-        <div class = "form-group">
-          <%= f.label :photo_url, class: "hidden"%>
-          <%= f.text_field :photo_url, placeholder: "www.somealoevera.com/aloe.png", class: 'form-control', required: true%>
-        </div>
-
-        <div class = "form-group">
-          <%= f.label :categories %> <br>
-          <%= f.collection_check_boxes(:category_ids, Category.all, :id, :category_name) do |b| %>
-            <%= b.label class:"custom-control custom-checkbox" do%>
-              <%= b.check_box + b.text %>
-            <%end%>
-          <% end %>
-        </div>
-
-        <div class="form-group">
-          <%= f.submit action_name, class: " btn btn-primary" %>
-          <%= link_to 'Cancel', products_path, class: "btn btn-secondary" %>
-        </div>
+  <% if @product.errors.any? %>
+    <ul class="errors">
+      <% @product.errors.each do |column, message| %>
+        <li>
+          <strong><%= column.capitalize %></strong> <%= message %>
+        </li>
       <% end %>
-    </section>
-  </main>
+    </ul>
+  <% end %>
+
+  <section>
+    <%= form_with model: @product do |f|  %>
+
+      <%= f.hidden_field :merchant_id, value: session[:merchant_id] %>
+
+      <div class = "form-group">
+        <%= f.label :categories %> <br>
+        <%= f.collection_check_boxes(:category_ids, Category.all, :id, :category_name) do |b| %>
+          <%= b.label class:"custom-control custom-checkbox" do%>
+            <%= b.check_box + b.text %>
+          <%end%>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control'%>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_field :description, class: 'form-control'%>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :price %>
+        <%= f.text_field :price, class: 'form-control'%>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :inventory %>
+        <%= f.text_field :inventory, class: 'form-control'%>
+      </div>
+
+      <div class="form-group">
+        <div class="file-field">
+          <div class="btn btn-primary btn-sm float-left">
+            <%= f.label :photo, class: "hidden"%>
+            <input type="file">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Upload your file">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit action_name, class: " btn btn-primary" %>
+        <%= link_to 'Cancel', products_path, class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </section>
