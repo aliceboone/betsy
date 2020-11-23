@@ -6,7 +6,7 @@ CSV.open("db/merchants_seeds.csv", "w", :write_headers => true, :headers => ["us
   25.times do
     username = Faker::FunnyName.two_word_name
     email = Faker::Internet.email
-    name = Faker::Name
+    name = Faker::Company.name
     # mailing_address = Faker::Address.full_address
     # credit_last_four = Faker::Number.number(digits: 4) #Faker::Number.number(4).uniq #=> "1968353479"
     # credit_expire = rand(Date.today.year..Date.today.year + 15)
@@ -15,8 +15,9 @@ CSV.open("db/merchants_seeds.csv", "w", :write_headers => true, :headers => ["us
   end
 end
 
-status_array = %w[pending paid shipped cancelled]
+
 CSV.open("db/orders_seeds.csv", "w", :write_headers => true, :headers => ["status", "email", "address", "credit_name", "credit_expire", "security_code", "zip"]) do |csv|
+  status_array = %w[pending paid shipped cancelled]
   15.times do
     status = status_array.sample
     email = Faker::Internet.email
@@ -35,7 +36,7 @@ CSV.open("db/products_seeds.csv", "w", :write_headers => true, :headers => %w[na
     name = Faker::Commerce.product_name
     description = Faker::Lorem.sentence
     inventory = rand(0..25)
-    price = Faker::Commerce.price
+    price = Faker::Commerce.price(range: 0..200.0, as_string: false)
     category = "Other"
     photo = Faker::Placeholdit.image
     rating = rand(0...5)
