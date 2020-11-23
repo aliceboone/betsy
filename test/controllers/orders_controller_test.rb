@@ -1,14 +1,46 @@
 require "test_helper"
 
 describe OrdersController do
-  let(:order) {
-    Order.create email: 'someone@something.com',
-                 address: 'some address',
-                 credit_name: 'Someone',
-                 credit_expire: '11/22',
-                 security_code: 'secret code',
-                 zip: 111111
+  let(:product){
+    Product.create!(
+        name: 'Aloe Juice',
+        description: 'Aloe Vera multi symptom relief juice',
+        inventory: 5,
+        price: 7.00,
+        category_ids: [],
+        photo: 'www.allaboutaloe.com/aloe_juice.png',
+        merchant_id: merchant.id
+    )
   }
+
+  let(:order) {
+    Order.create! email: 'someone@something.com',
+                  address: 'some address',
+                  credit_name: 'Someone',
+                  credit_expire: '11/22',
+                  security_code: 'secret code',
+                  zip: 111111
+  }
+
+  let(:edit_order_hash)
+    {
+        order: {
+            email: 'happy@strong.com',
+            address: 'many places',
+            credit_name: 'happy',
+            credit_expire: '11/22',
+            security_code: 'enjoy the moment',
+            zip: 111111
+        }
+    }
+
+  let(:order_item) {
+    OrderItem.create! product_id: product.id,
+        order_id: order.id
+  }
+
+
+
 
   describe 'Index' do
     it 'should get index' do
@@ -19,6 +51,7 @@ describe OrdersController do
 
   describe 'Show' do
     it 'can get a valid order' do
+      skip
       get order_path(order.id)
       must_respond_with :success
     end
@@ -46,17 +79,7 @@ describe OrdersController do
                      zip: 111111)
       end
 
-      let (:edit_order_hash) do
-        {
-          order: {
-            email: 'happy@strong.com',
-            address: 'many places',
-            credit_name: 'happy',
-            credit_expire: '11/22',
-            security_code: 'enjoy the moment',
-            zip: 111111
-          }
-        }
+
       end
       
       it 'can update an existing order' do
@@ -82,7 +105,7 @@ describe OrdersController do
         patch order_path(-1), params: edit_order_hash
       end
     end
-  end
+
 
   describe 'Destroy' do
     before do
@@ -105,6 +128,4 @@ describe OrdersController do
       must_redirect_to orders_path
     end
   end
-
-
 end

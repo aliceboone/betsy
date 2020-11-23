@@ -61,7 +61,6 @@ CSV.foreach(PRODUCT_FILE, :headers => true) do |row|
   product.inventory = row['inventory']
   product.price = row['price']
   product.photo = row['photo']
-  # product.rating = row['rating']
   categories.sample(rand(0..3)).each do |category|
     product.categories << category
   end
