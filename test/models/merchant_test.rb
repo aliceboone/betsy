@@ -1,10 +1,23 @@
 require "test_helper"
 
 describe Merchant do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
-  #
+
+  describe 'relations' do
+    it 'can have many products' do
+      # create a product with a merchant_id & corresponding merchant
+      merchant = merchants(:merch-two)
+      product = Product.create!(name: 'joggers', inventory: 4, price: 102, photo: 'test.jpeg', merchant_id: '2')
+      #  must_respond_to :products
+      expect(merchant.merchant_id(2)).must_respond_to product
+      #       must_equal something
+      #each product must be an instance of product
+    end
+
+    it 'can have no products' do
+
+    end
+  end
+
   describe "validations" do
     it "merchant must have a username" do
       # Arrange

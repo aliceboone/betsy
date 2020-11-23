@@ -1,9 +1,20 @@
 require "test_helper"
 
 describe Product do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+  describe 'relations' do
+    # has merchant_id
+    describe 'merchants' do
+      it "can set the merchant, using a Merchant" do
+        merchant = Merchant.new(name: "Test Product", email: 'test@test.test')
+        # (name: "Test Product", email: 'test@test.test')
+        product = Product.new(name: "Test Username")
+
+        product.merchant = merchant
+
+        expect(product.merchant_id).must_equal merchant.id
+      end
+    end
+  end
 
   describe "validations" do
       it "product must have a name" do
