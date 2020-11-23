@@ -4,22 +4,21 @@ describe Merchant do
 
   describe 'relations' do
     it 'can have many products' do
-      # create a product with a merchant_id & corresponding merchant
       merchant = merchants(:merch_one)
-      p merchant.products
-      # product = Product.find_by(name: "used laptop")
-      #  must_respond_to :products
-      # expect(merchant.products).must_include name: "desk lamp"
-      merchant.products.where(name: "desk lamp")
-      # collections
+      expect(merchant).must_respond_to :products
+      merchant.products.each do |product|
+        expect(product).must_be_kind_of Product
+      end
       expect(merchant.products.count).must_equal 3
-          # .must_respond_to product
-      #       must_equal something
-      #each product must be an instance of product
     end
 
     it 'can have no products' do
-      skip
+      merchant = merchants(:merch_five)
+      expect(merchant).must_respond_to :products
+      merchant.products.each do |product|
+        expect(product).must_be_kind_of Product
+      end
+      expect(merchant.products.count).must_equal 0
     end
   end
 
