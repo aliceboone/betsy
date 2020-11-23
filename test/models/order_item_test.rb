@@ -1,10 +1,37 @@
 require "test_helper"
 
 describe OrderItem do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
-  #
+  describe 'relations' do
+    #has && belongs to product_id & order_id
+    it "can set the order, using a Order" do
+      order = Order.create!(status: "Test Order Status", email: 'order_item@test.test')
+      # (name: "Test Product", email: 'test@test.test')
+      order_item = OrderItem.new(quantity: 8)
+
+      order_item.order = order
+
+      expect(order_item.order_id).must_equal order.id
+    end
+    it "can set the product, using a Product" do
+      skip
+      #is this the right candidate for a fixture?? If so how do I access one?
+      product = Product.create!(name: "Test Product", price: 22, merchant: "Fake?")
+      # (name: "Test Product", email: 'test@test.test')
+      order_item = OrderItem.new(quantity: 10)
+
+      order_item.product = product
+
+      expect(order_item.product_id).must_equal product.id
+    end
+
+    it 'has an order'do
+      skip
+    end
+    it 'has a product' do
+      skip
+    end
+  end
+
   # validates :quantity, presence: true, numericality: {greater_than: 0}
   describe "validations" do
     it "order item must have a quantity" do
