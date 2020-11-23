@@ -26,7 +26,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order_items = @order.order_items
     if @order.nil?
       redirect_to orders_path
       return
@@ -42,9 +41,13 @@ class OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
+      update_notice
       redirect_to orders_path
+      return
     else
+      not_saved_notice
       render :edit
+      return
     end
   end
 

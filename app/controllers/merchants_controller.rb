@@ -49,7 +49,7 @@ class MerchantsController < ApplicationController
     end
   end
 
-  def edit;
+  def edit
     if @merchant.nil?
       redirect_to merchants_path
       return

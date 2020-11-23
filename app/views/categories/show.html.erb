@@ -6,8 +6,9 @@
     <% end %>
     <section>
       <%= link_to "Back to categories", root_path, class: "button" %>
-      <%= link_to "Edit", edit_category_path(@category.id), class: "button"%>
-      <%= link_to "Delete", category_path(@category.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"%>
+<!--      If we have to edit or destroy categories we can add those buttons, but we wont do that here-->
+      <%#= link_to "Edit", edit_category_path(@category.id), class: "button"%>
+      <%#= link_to "Delete", category_path(@category.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"%>
     </section>
   </section>
 </main>

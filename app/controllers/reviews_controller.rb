@@ -21,7 +21,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-
     @review = Review.new(review_params)
     product = Product.find_by(id: @review.product_id)
     if product.nil?

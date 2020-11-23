@@ -22,7 +22,6 @@
 
   <section class="inline-navigation">
     <nav id="nav-bar">
-
         <ul class="navbar-nav">
           <div class="left-nav">
             <div>
@@ -33,27 +32,38 @@
               </li>
             </div>
           </div>
+
+          <div class="left-nav">
+            <div>
+              <li class="nav-item-left">
+                <i class="fa fa-custom fa-users">
+                  <%= link_to "Products", products_path, class: "nav-link-custom" %>
+                </i>
+              </li>
+            </div>
+          </div>
           <div>
             <li class="nav-item-left dropdown">
               <i class="fa fa-custom fa-sitemap">
                 <a class="nav-link-custom" href="#" >
-                  <%= link_to "Products", products_path, class: "nav-link-custom" %>
+                  <%= link_to "Categories", products_path, class: "nav-link-custom" %>
                 </a>
               </i>
               <div class="dropdown-menu">
-                <% @categories.each do |category| %>
-                  <p><%= category.category_name %></p>
-                <% end %>
+                  <ul>
+                    <% @categories.each do |category| %>
+                      <li><%= link_to category.category_name, category_path(category) %></li>
+                    <% end %>
+                  </ul>
               </div>
             </li>
           </div>
         </ul>
-
         <ul class="navbar-nav">
           <% if @current_user %>
             <li class="nav-item-right">
               <i class="fa fa-custom fa-user-circle">
-                <%= link_to @current_user.username, merchant_path(session[:merchant_id]), class: "nav-link-custom user-nav"%>
+                <%= link_to @current_user.username, profile_path, class: "nav-link-custom user-nav"%>
               </i>
             </li>
             <li class="nav-item-right">
@@ -61,6 +71,7 @@
                 <%= link_to "Log out", logout_path, method: "delete", class: "nav-link-custom" %>
               </i>
             </li>
+
           <% else %>
             <li class="nav-item-right">
               <i class="fa fa-custom fa-arrow-circle-right">
@@ -75,14 +86,23 @@
             </i>
           </li>
         </ul>
-
     </nav>
-
   </section>
 </header>
 
 <body>
-<%= yield %>
+  <% if flash[:notice] %>
+    <div class="alert alert-warning"><%= flash[:notice] %></div>
+  <% end %>
+
+  <% if flash[:success] %>
+    <div class="alert alert-success"><%= flash[:success] %></div>
+  <% end %>
+
+  <% if flash[:error] %>
+  <div class="alert alert-info"><%= flash[:error] %></div>
+<% end %>
+  <%= yield %>
 </body>
 
 <div class="container">
