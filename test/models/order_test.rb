@@ -8,6 +8,9 @@ describe Order do
         # create order
         # count # order_items in the order
       end
+      it 'can be empty' do
+
+      end
     end
   end
 

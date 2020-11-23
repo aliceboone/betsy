@@ -5,20 +5,20 @@ product_one:
 product_two:
   name: nalgene
   price: 10
-  merchant_id: 1
+  merchant: merch_one
 product_three:
   name: used laptop
   price: 200.00
-  merchant_id: 2
+  merchant: merch_two
 product_four:
   name: webcam
   price: 50
-  merchant_id: 3
+  merchant: merch_three
 product_five:
   name: headphones
   price: 75
-  merchant_id: 1
+  merchant: merch_one
 product_six:
   name: logitech mouse
   price: 30
-  merchant_id: 3
+  merchant: merch_three
