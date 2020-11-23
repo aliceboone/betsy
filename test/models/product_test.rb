@@ -20,6 +20,7 @@ describe Product do
         skip
         #take a product with no category and expect 0
       end
+    end
   end
 
   describe "validations" do
