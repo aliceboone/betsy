@@ -1,32 +1,69 @@
-<main>
-  <section>
+<section class="content">
+  <%# if !@product.discontinued %>
+  <section class="px-5">
     <h2>Name: <%= @product.name %> </h2>
-    <p>Description: <%= @product.description %></p>
-    <p>Price:<%= @product.price %> </p>
-    <p>Category:</p>
-    <ul>
-    <% @product.categories.each do |category| %>
-      <li><%= category.category_name%></li>
+    <h4 class="catalog__detail-header">Rating: <%= @product.average_rating%>/5 </h4>
+    <h4 class="catalog__detail-header">Reviews: <%= @product.reviews.count %></h4>
+    <h4 class="catalog__detail-header">Sold by: <span><%= link_to @product.merchant.username, merchant_path(@product.merchant), class: "catalog__detail-header" %></span></h4>
+    <h6 class="catalog__secondary-header">Categories:
+      <% @product.categories.each do |category| %>
+        <%= category.category_name %> |
       <% end %>
-    </ul>
-    <p>Inventory:<%= @product.inventory%></p>
-    <%if @product.inventory >= 1 %>
-      <%= form_with scope: :order_item, url:product_order_items_path(@product), method: :post do |f| %>
-        <%= f.select :quantity, (1..@product.inventory).to_a %>
-        <br>
-        <%= f.submit :submit, class: "btn btn-primary"%>
+    </h6>
+    <hr>
+  </section>
+  <section class="container-fluid px-5">
+    <div class="row px-5">
+      <div class="col">
+        <div class="embed-responsive embed-responsive-1by1">
+          <img class="card-img-top embed-responsive-item rounded-0" src=<%= @product.photo %> alt=<%= @product.name%>>
+        </div>
+      </div>
+      <div class="col">
+        <h2 class="catalog__description-title">$<%= number_with_precision(@product.price, :precision => 2, :delimiter => ',') %></h2>
+        <h2 class="text-uppercase catalog__description-title">Description</h2>
+        <div class="catalog__description-text"><%= @product.description %></div>
+        <div class="py-3">
+          <% if @product.inventory == 0 %>
+            <h2 class="catalog__description-title">Out of Stock </h2>
+          <% else %>
+            <%= form_with scope: :order_item, url:product_order_items_path(@product), method: :post do |f| %>
+              <div class="form-group">
+                <h2>
+                  <%= f.label :quantity, class: "catalog__description-title"%>
+                </h2>
+                <%= f.select :quantity, options_for_select(1..@product.inventory), {}, {class: "form-control"} %>
+                <%= f.submit "Add to Cart",  class: "btn btn-primary"%>
+              </div>
+              <% if @product.discontinued%>
+                <br>
+                <h2 class="catalog__description-title">This product is discontinued, unable to purchase.</h2>
+              <% else %>
+              <% end %>
+            <% end %>
+          <% end %>
+          <% if current_user %>
+            <%= link_to "Edit", edit_product_path(@product.id), class: "btn btn-secondary"%>
+            <%= link_to "Discontinue", product_path(@product.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container-fluid p-5 mb-5">
+    <h2 class="catalog__review-title">Reviews</h2>
+    <hr>
+    <%= link_to "Review this product", new_product_review_path(product_id:@product), method: :get, class: "btn btn-primary" %> <br> <br>
+    <% if !@product.reviews.empty? %>
+      <% @product.reviews.each do |review| %>
+        <h5 class="catalog__detail-header"> <%= review.created_at.strftime("%B %d, %Y") %></h5>
+        <h4 class="catalog__detail-header">Rating: <%= review.rating %></h4>
+        <p class="catalog__review-text"><%= review.content %></p>
+        <hr>
       <% end %>
+    <% else %>
+      <h6 class="catalog__review-text">No reviews yet</h6>
     <% end %>
-    <span><%= link_to "Back to categories", root_path, class: "btn btn-secondary"%></span>
   </section>
-  
-  <section>
-      <%#= link_to "Add to Cart", product_order_items_path(@product.id), method: :post, class: "btn btn-primary"%>
-      <% if current_user %>
-        <%= link_to "Edit", edit_product_path(@product.id), class: "btn btn-secondary"%>
-        <%= link_to "Discontinue", product_path(@product.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"%>
-      <% end %>
-    </section>
-  </section>
-</main>
-
+  <%# end %>
+</section>
