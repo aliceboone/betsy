@@ -20,7 +20,8 @@ class OrderItemsController < ApplicationController
       return
     end
 
-    if @cart.add_product(chosen_product)
+    quantity = order_item_params[:quantity].to_i
+    if @cart.add_product(chosen_product, quantity)
       redirect_to cart_path
     else
       flash[:error] = "Product failed to be added to the order"
@@ -32,6 +33,10 @@ class OrderItemsController < ApplicationController
     @order_item = OrderItem.find(params[:id])
     @order_item.destroy
     redirect_to order_path(@order)
+  end
+
+  def update_quantity
+    @order_item.update_attribute(:quantity)
   end
 
   def add_quantity

@@ -3,18 +3,25 @@
     <h2>Name: <%= @product.name %> </h2>
     <p>Description: <%= @product.description %></p>
     <p>Price:<%= @product.price %> </p>
-    <p>Inventory:<%= @product.inventory%></p>
     <p>Category:</p>
     <ul>
     <% @product.categories.each do |category| %>
       <li><%= category.category_name%></li>
       <% end %>
     </ul>
-    <section>
-
-      <%= link_to "Add to Cart", product_order_items_path(@product.id), method: :post, class: "btn btn-primary"%>
-      
-      <%= link_to "Back to categories", root_path, class: "btn btn-secondary"%>
+    <p>Inventory:<%= @product.inventory%></p>
+    <%if @product.inventory >= 1 %>
+      <%= form_with scope: :order_item, url:product_order_items_path(@product), method: :post do |f| %>
+        <%= f.select :quantity, (1..@product.inventory).to_a %>
+        <br>
+        <%= f.submit :submit, class: "btn btn-primary"%>
+      <% end %>
+    <% end %>
+    <span><%= link_to "Back to categories", root_path, class: "btn btn-secondary"%></span>
+  </section>
+  
+  <section>
+      <%#= link_to "Add to Cart", product_order_items_path(@product.id), method: :post, class: "btn btn-primary"%>
       <% if current_user %>
         <%= link_to "Edit", edit_product_path(@product.id), class: "btn btn-secondary"%>
         <%= link_to "Discontinue", product_path(@product.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"%>
