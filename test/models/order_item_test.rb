@@ -3,32 +3,30 @@ require "test_helper"
 describe OrderItem do
   describe 'relations' do
     #has && belongs to product_id & order_id
+    before do
+      @order = Order.create!(status: "Test Order Status", email: 'order_item@test.test')
+      @product = products(:product_two)
+    end
+
     it "can set the order, using a Order" do
-      order = Order.create!(status: "Test Order Status", email: 'order_item@test.test')
-      # (name: "Test Product", email: 'test@test.test')
+      @order
       order_item = OrderItem.new(quantity: 8)
+      order_item.order = @order
 
-      order_item.order = order
+      expect(order_item.order_id).must_equal @order.id
 
-      expect(order_item.order_id).must_equal order.id
-    end
-    it "can set the product, using a Product" do
-      skip
-      #is this the right candidate for a fixture?? If so how do I access one?
-      product = Product.create!(name: "Test Product", price: 22, merchant: "Fake?")
-      # (name: "Test Product", email: 'test@test.test')
-      order_item = OrderItem.new(quantity: 10)
-
-      order_item.product = product
-
-      expect(order_item.product_id).must_equal product.id
+      @order.order_items.each do |order_item|
+        expect(order_item).must_be_kind_of Order
+      end
+      expect(@order.order_items).wont_be_nil
     end
 
-    it 'has an order'do
-      skip
-    end
     it 'has a product' do
-      skip
+      @product
+      order_item = OrderItem.new(quantity: 2)
+      order_item.product = @product
+
+      expect(order_item.product_id).must_equal @product.id
     end
   end
 
