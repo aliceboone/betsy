@@ -26,13 +26,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if @order.order_items.nil?
-      flash[:error] = "There are no products in your cart"
-      redirect_to root_path
-    else
-      @order_items = @order.order_items
-    end
-
     if @order.nil?
       redirect_to orders_path
       return
@@ -48,9 +41,13 @@ class OrdersController < ApplicationController
 
   def update
     if @order.update(order_params)
+      update_notice
       redirect_to orders_path
+      return
     else
+      not_saved_notice
       render :edit
+      return
     end
   end
 
@@ -70,5 +67,5 @@ class OrdersController < ApplicationController
   def find_order
     @order = Order.find_by_id(params[:id])
   end
-  
 end
+

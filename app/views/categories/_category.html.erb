@@ -1,24 +1,10 @@
-<main>
-  <h1 class = "catalog__header">Add a new category</h1>
-  <hr>
-  <% if @category.errors.any? %>
-    <ul class="errors alert alert-danger">
-      <% @category.errors.each do |column, message| %>
-        <li>
-          <strong><%= column.capitalize %></strong> <%= message %>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
-
+<section>
   <%= form_with model: @category do |f|  %>
 
     <div class = "form-group">
       <%= f.label :category_name %>
       <%= f.text_field :category_name, class: 'form-control'%>
-
     </div>
-    <%= f.submit 'Add new category', class: 'btn btn-primary'%>
+    <%= f.submit action_name, class: 'btn btn-primary'%>
   <% end %>
-
-</main>
+</section>

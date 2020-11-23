@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :order_items, only: [:create, :destroy]
-    resources :reviews, only: %i[new create]
+    resources :reviews, only: [:new]
   end
 
   get '/auth/github', as: 'github_login'
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :products
   resources :merchants
+  get '/profile', to: 'merchants#profile', as: 'profile'
 
   resources :order_items, only: %i[update destroy]
   patch 'order_items/:id/mark_shipped', to: 'order_items#mark_shipped', as: 'mark_shipped'
@@ -26,8 +27,8 @@ Rails.application.routes.draw do
   get '/orders/:id/cart/success', to: 'orders#success', as: 'success'
   patch '/orders/:id/cancel', to: 'orders#cancel', as: 'cancel'
 
-  resources :reviews, only: [:create]
-  resources :categories, only: %i[new create show edit]
+  resources :reviews, only: [:create, :update]
+  resources :categories
   resources :order_items
   resources :categories
 end
