@@ -6,10 +6,8 @@ describe ReviewsController do
     Merchant.create!(
         id: 1,
         username: 'Jane Do',
-        email: 'jdo@somewhere.com',
-        mailing_address: '1111 3rd Ave NE Seattle WA 98000',
-        credit_last_four: 1111,
-        credit_expire: '12/23' )
+        email: 'jdo@somewhere.com'
+        )
   }
 
   let(:product){
