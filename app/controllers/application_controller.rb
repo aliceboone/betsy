@@ -49,6 +49,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def find_product
+    @product = Product.find_by(id: product.id)
+  end
+
   def clear_cart
     session[:cart_id] = nil
   end
