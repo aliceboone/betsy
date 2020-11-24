@@ -14,21 +14,19 @@ class Order < ApplicationRecord
     order_item.save
   end
 
-
-
   def self.make_cart
     Order.new(status: 'pending')
   end
 
   def checkout
     if self.status != 'pending'
-      errors.add(:base, :invalid_order , message:'The order is not valid' )
+      errors.add(:base, :invalid_order, message: 'The order is not valid')
       return false
     end
 
     order_items.each do |order_item|
       if order_item.quantity > order_item.product.inventory
-        errors.add(:base, :invalid_order, message:'The quantity of a purchased order should not be more than product stock')
+        errors.add(:base, :invalid_order, message: 'The quantity of a purchased order should not be more than product stock')
         return false
       end
     end
@@ -41,12 +39,12 @@ class Order < ApplicationRecord
     self.save
   end
 
-  def self.total_orders
-      sum = 0
-      self.order_item.each do |order_item|
-        sum += (order_items.product.price * order_item.quantity)
-      end
-      return sum
-  end
+  # def self.total_orders
+  #     sum = 0
+  #     self.order_item.each do |order_item|
+  #       sum += (order_items.product.price * order_item.quantity)
+  #     end
+  #     return sum
+  # end
 
 end
