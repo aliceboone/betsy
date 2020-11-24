@@ -1,15 +1,15 @@
 <section class="content">
   <%# if !@product.discontinued %>
   <section class="px-5">
-    <h2>Name: <%= @product.name %> </h2>
-    <h4 class="catalog__detail-header">Rating: <%= @product.average_rating%>/5 </h4>
-    <h4 class="catalog__detail-header">Reviews: <%= @product.reviews.count %></h4>
-    <h4 class="catalog__detail-header">Sold by: <span><%= link_to @product.merchant.username, merchant_path(@product.merchant), class: "catalog__detail-header" %></span></h4>
-    <h6 class="catalog__secondary-header">Categories:
+    <h3>Name: <%= @product.name %> </h3>
+    <h5 class="catalog__detail-header">Rating: <%= @product.average_rating%>/5 </h5>
+    <h5 class="catalog__detail-header">Reviews: <%= @product.reviews.count %></h5>
+    <h5 class="catalog__detail-header">Sold by: <span><%= link_to @product.merchant.username, merchant_path(@product.merchant), class: "catalog__detail-header" %></span></h5>
+    <h5 class="catalog__secondary-header">Categories:
       <% @product.categories.each do |category| %>
         <%= category.category_name %> |
       <% end %>
-    </h6>
+    </h5>
     <hr>
   </section>
   <section class="container-fluid px-5">
@@ -56,8 +56,8 @@
     <%= link_to "Review this product", new_product_review_path(product_id:@product), method: :get, class: "btn btn-primary" %> <br> <br>
     <% if !@product.reviews.empty? %>
       <% @product.reviews.each do |review| %>
-        <h5 class="catalog__detail-header"> <%= review.created_at.strftime("%B %d, %Y") %></h5>
-        <h4 class="catalog__detail-header">Rating: <%= review.rating %></h4>
+        <h6 class="catalog__detail-header"> <%= review.created_at.strftime("%B %d, %Y") %></h6>
+        <h6 class="catalog__detail-header">Rating: <%= review.rating %></h6>
         <p class="catalog__review-text"><%= review.content %></p>
         <hr>
       <% end %>

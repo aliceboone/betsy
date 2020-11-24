@@ -1,8 +1,7 @@
  <section>
-      <h2>Username: <%= @merchant.username %> </h2>
+      <h3>Username: <%= @merchant.username %> </h3>
       <% if current_user %>
       <p>Email: <%= @merchant.email %></p>
-      <p>Mailing Address:<%= @merchant.mailing_address %> </p>
       <section>
         <%= link_to "Back to Merchants", merchants_path, class: "btn btn-secondary"%>
         <%= link_to "Edit", edit_merchant_path(@merchant.id), class: "btn btn-secondary"%>

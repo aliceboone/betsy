@@ -18,12 +18,14 @@
 @import "**/*";
 
 // Header
+
 header {
     padding: 30px;
     font-size: 20px;
     max-width: 100%;
     padding-bottom: 0;
     padding-top: 0;
+   background-color: #FFFFE0;
 }
 
 .header-logo {
@@ -50,29 +52,33 @@ header {
 
 
 h1 {
-   margin-bottom: 0px;
+     margin-bottom: 0px;
 }
 
 // Footer
 
-.footer_text {
-    font-size: 12px;
+.footer {
+      padding-left: 0;
+      margin-bottom: 0;
+      text-align: center;
+      font-weight: 300;
+      background-color: #FFFFE0;
+      color: #7f7f7f;
 }
 
-.footer_link {
-    color: #fff;
-    font-size: 12px;
+.footer__text {
+  font-size: 12px;
 }
 
-.footer_link:hover {
-    text-decoration: none;
-    color: #161616;
+.footer__link:hover {
+  text-decoration: none;
+  color: #7f7f7f;;
 }
 
 // Navigation
+
 .nav-item-custom {
     font-family: arial;
-    text-transform: uppercase;
     display: flex;
     flex-wrap: wrap;
     padding-left: 0;
