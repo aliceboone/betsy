@@ -14,8 +14,6 @@ class Order < ApplicationRecord
     order_item.save
   end
 
-
-
   def self.make_cart
     Order.new(status: 'pending')
   end

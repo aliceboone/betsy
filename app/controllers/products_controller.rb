@@ -7,6 +7,10 @@ class ProductsController < ApplicationController
     flash[:success] = " #{@product.name} out of stock! "
   end
 
+  def not_saved_notice
+    flash.now[:notice] = "Could not create product!"
+  end
+
   def discontinued_notice
     flash[:success] = " #{@product.name} is discontinued! "
   end

@@ -6,7 +6,7 @@
 .idea
 .env
 coverage
-# Ignore bundler config.
+# Ignore\ bundler config.
 /.bundle
 
 # Ignore all logfiles and tempfiles.
