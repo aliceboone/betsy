@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
 
-   before_action :require_login, except: [:show, :new, :create]
+   before_action :require_login, except: [:show]
    before_action :find_category, only: [:show, :edit, :destroy]
 
   def saved_notice

@@ -13,7 +13,6 @@ class OrdersController < ApplicationController
   def cart
     @order = @cart
     @order_items = @order.order_items
-    render :show
   end
 
   def create
@@ -26,13 +25,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    if @order.order_items.nil?
-      flash[:error] = "There are no products in your cart"
-      redirect_to root_path
-    else
-      @order_items = @order.order_items
-    end
-
     if @order.nil?
       redirect_to orders_path
       return
@@ -47,10 +39,13 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if @order.update(order_params)
-      redirect_to orders_path
+    if @order.update(order_params) && @order.checkout
+      clear_cart
+      redirect_to order_path(@order)
     else
+      flash[:error] = @order.errors.messages[:base]&.first
       render :edit
+      return
     end
   end
 
@@ -60,15 +55,22 @@ class OrdersController < ApplicationController
     end
   end
 
+  def checkout
+    if @cart.checkout
+    else
+      flash[:error] = @cart.errors.messages[:base]&.first # if base isn't set then it will return nil ortherwise it will return the first value
+    end
+  end
+
   private
 
   def order_params
-    params.require(:order).permit(:status, :email, :address, :credit_name, :credit_expire, :security_code, :zip)
+    params.require(:order).permit(:email, :address, :credit_name, :credit_expire, :security_code, :zip)
   end
 
 
   def find_order
     @order = Order.find_by_id(params[:id])
   end
-  
 end
+

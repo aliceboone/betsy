@@ -40,13 +40,21 @@ class ApplicationController < ActionController::Base
   def ensure_cart
     @cart = Order.find_by(id: session[:cart_id])
     if @cart.nil?
-      @cart = Order.new
+      @cart = Order.make_cart
       if @cart.save
         session[:cart_id] = @cart.id
       else
         @cart = nil
       end
     end
+  end
+
+  def find_product
+    @product = Product.find_by(id: product.id)
+  end
+
+  def clear_cart
+    session[:cart_id] = nil
   end
 
   def require_cart

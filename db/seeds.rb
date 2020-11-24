@@ -9,9 +9,10 @@ CSV.foreach(MERCHANT_FILE, :headers => true) do |row|
   merchant = Merchant.new
   merchant.username = row['username']
   merchant.email = row['email']
-  merchant.mailing_address = row['mailing_address']
-  merchant.credit_last_four = row['credit_last_four']
-  merchant.credit_expire = row['credit_expire']
+  merchant.name = row['name']
+  # merchant.mailing_address = row['mailing_address']
+  # merchant.credit_last_four = row['credit_last_four']
+  # merchant.credit_expire = row['credit_expire']
   successful = merchant.save
   if !successful
     merchant_failures << merchant
@@ -61,6 +62,8 @@ CSV.foreach(PRODUCT_FILE, :headers => true) do |row|
   product.inventory = row['inventory']
   product.price = row['price']
   product.photo = row['photo']
+  #product.rating = row['rating']
+
   categories.sample(rand(0..3)).each do |category|
     product.categories << category
   end
@@ -83,13 +86,14 @@ puts "Loading raw work data from #{ORDER_FILE}"
 order_failures = []
 CSV.foreach(ORDER_FILE, :headers => true) do |row|
   order = Order.new
+  order.status = row['status']
   order.email = row['email']
   order.address = row['address']
   order.credit_name = row['credit_name']
   order.credit_expire = row['credit_expire']
   order.security_code = row['security_code']
   order.zip = row['zip']
-  successful = order.save
+  successful = order.save!
   if !successful
     order_failures << order
     puts "Failed to save work: #{order.inspect}"
