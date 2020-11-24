@@ -4,14 +4,21 @@ describe Product do
   describe 'relations' do
     # has merchant_id
     describe 'merchants' do
-      it "can set the merchant, using a Merchant" do
-        merchant = Merchant.new(name: "Test Product", email: 'test@test.test')
-        # (name: "Test Product", email: 'test@test.test')
-        product = Product.new(name: "Test Username")
-
-        product.merchant = merchant
+      it 'can access correlating merchant' do
+        merchant = merchants(:merch_two)
+        product = products(:product_three)
 
         expect(product.merchant_id).must_equal merchant.id
+      end
+
+      it "can have many categories" do
+        skip
+        #take a product that has a category and set it to must have num
+      end
+
+      it "can have no categories" do
+        skip
+        #take a product with no category and expect 0
       end
     end
   end
