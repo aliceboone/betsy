@@ -15,6 +15,7 @@ class Order < ApplicationRecord
   end
 
 
+
   def self.make_cart
     Order.new(status: 'pending')
   end
