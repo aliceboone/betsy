@@ -5,9 +5,10 @@
   <% else %>
   <ul>
   <% @order_items.each do |order_item| %>
-    <li><%= order_item.product.name %> with a quantity of <%= order_item.quantity %></li>
+    <li><%= order_item.product.name %>,quantity: <strong><%= order_item.quantity %></strong>, price: <strong>$<%='%.2f' %  order_item.product.price.to_f %> </strong></li>
   <% end %>
   </ul>
 <% end %>
+<strong>Total cost: <%= $<%='%.2f' % Order.total_orders%></strong>
 
 <%= link_to 'Checkout', edit_order_path(@cart), class: "btn btn-primary"%>

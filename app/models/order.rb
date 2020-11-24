@@ -41,4 +41,12 @@ class Order < ApplicationRecord
     self.save
   end
 
+  def self.total_orders
+      sum = 0
+      self.order_item.each do |order_item|
+        sum += (order_items.product.price * order_item.quantity)
+      end
+      return sum
+  end
+
 end
