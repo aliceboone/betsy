@@ -3,6 +3,21 @@
 <%= form_with model: @cart do |f| %>
 <%= f.label :email %>
 <%= f.text_field :email %>
-
-<%= f.submit %>
+  <br>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+  <br>
+  <%= f.label :credit_name %>
+  <%= f.text_field :credit_name %>
+  <br>
+  <%= f.label :credit_expire %>
+  <%= f.text_field :credit_expire %>
+  <br>
+  <%= f.label :security_code %>
+  <%= f.text_field :security_code %>
+  <br>
+  <%= f.label :zip %>
+  <%= f.text_field :zip %>
+  <br>
+<%= f.submit "Proceed to Checkout", class:"btn btn-primary" %>
 <% end %>
