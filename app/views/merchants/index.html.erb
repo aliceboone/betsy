@@ -13,21 +13,19 @@
                   <img class="card-img-top embed-responsive-item rounded-0" src=<%= %> alt=<%= merchant.username%>>
                 </div>
                 <div class="card-title text-uppercase pt-3">
-                  <section class="catalog__card-title-container">
                   <% if merchant.id == session[:merchant_id] %>
                     <section class="catalog__card-title-container">
                       <h5> <%= button_to merchant.username, merchant_path(merchant.id), method: :get, class: "catalog__card-title-button text-left"%> </h5>
-                    <% end %>
                     </section>
-                  </section>
+                  <% end %>
                   <section class="catalog__card-title-container">
                     <h5> <%= link_to "#{merchant.username}'s Shop", products_path(username: merchant.username), class: "catalog__card-title-button text-left"%> </h5>
                   </section>
-             </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
           <% end %>
+        </div>
       </section>
     <% else %>
       <h1>No merchants in the system!</h1>

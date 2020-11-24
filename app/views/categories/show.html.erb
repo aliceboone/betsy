@@ -1,5 +1,4 @@
-<main>
-  <section>
+ <section>
     <h2>Name: <%= @category.category_name %> </h2>
     <% @category.products.each do |product| %>
     <p><%= product.name%></p>
@@ -11,4 +10,3 @@
       <%#= link_to "Delete", category_path(@category.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"%>
     </section>
   </section>
-</main>

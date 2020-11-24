@@ -12,20 +12,24 @@
       <%= form_with model: @merchant do |f|  %>
 
         <div class="form-group">
+          <%= f.label :username %>
+          <%= f.text_field :username, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email%>
+          <%= f.text_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
           <%= f.label :photo %>
           <%= f.text_field :photo, class: 'form-control' %>
         </div>
-
-        <div class="form-group">
-          <%= f.label :store_name %>
-          <%= f.text_field :mailing_address, class: 'form-control' %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :store_location %>
-          <%= f.text_field :store_location, class: 'form-control' %>
-        </div>
-
 
         <div class="form-group">
           <%= f.submit action_name, class: " btn btn-primary" %>
