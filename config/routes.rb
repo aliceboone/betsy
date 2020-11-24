@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :products
   resources :merchants
   get '/profile', to: 'merchants#profile', as: 'profile'
+  get '/dashboard', to: 'merchants#dashboard', as: 'dashboard'
 
   resources :order_items, only: %i[update destroy]
   patch 'order_items/:id/mark_shipped', to: 'order_items#mark_shipped', as: 'mark_shipped'
@@ -28,7 +29,6 @@ Rails.application.routes.draw do
   patch '/orders/:id/cancel', to: 'orders#cancel', as: 'cancel'
 
   resources :reviews, only: [:create, :update]
-  resources :categories
   resources :order_items
   resources :categories
 end

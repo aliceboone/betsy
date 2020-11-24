@@ -5,7 +5,7 @@ class Product < ApplicationRecord
 
   has_many :reviews
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: {case_sensitive: false}
   validates :price, presence: true, numericality: {greater_than: 0}
   validates :merchant, presence: true
 

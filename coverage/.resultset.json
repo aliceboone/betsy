@@ -1,7 +1,7 @@
 {
   "Minitest": {
     "coverage": {
-      "/Users/humam.noor/code/projects/betsy/test/controllers/categories_controller_test.rb": {
+      "/Users/ada/Documents/Week_12/betsy/test/controllers/categories_controller_test.rb": {
         "lines": [
           1,
           null,
@@ -48,7 +48,7 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/app/controllers/categories_controller.rb": {
+      "/Users/ada/Documents/Week_12/betsy/app/controllers/categories_controller.rb": {
         "lines": [
           1,
           null,
@@ -88,6 +88,8 @@
           0,
           0,
           null,
+          null,
+          0,
           0,
           null,
           null,
@@ -117,93 +119,7 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/humam.noor/code/projects/betsy/test/controllers/homepages_controller_test.rb": {
+      "/Users/ada/Documents/Week_12/betsy/test/controllers/homepages_controller_test.rb": {
         "lines": [
           1,
           null,
@@ -216,13 +132,13 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/app/controllers/homepages_controller.rb": {
+      "/Users/ada/Documents/Week_12/betsy/app/controllers/homepages_controller.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/test/controllers/merchants_controller_test.rb": {
+      "/Users/ada/Documents/Week_12/betsy/test/controllers/merchants_controller_test.rb": {
         "lines": [
           1,
           null,
@@ -364,7 +280,7 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/app/controllers/merchants_controller.rb": {
+      "/Users/ada/Documents/Week_12/betsy/app/controllers/merchants_controller.rb": {
         "lines": [
           1,
           null,
@@ -455,6 +371,14 @@
           null,
           null,
           1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
           null,
           1,
           0,
@@ -466,7 +390,7 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/test/controllers/order_items_controller_test.rb": {
+      "/Users/ada/Documents/Week_12/betsy/test/controllers/order_items_controller_test.rb": {
         "lines": [
           1,
           null,
@@ -515,7 +439,7 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/app/controllers/order_items_controller.rb": {
+      "/Users/ada/Documents/Week_12/betsy/app/controllers/order_items_controller.rb": {
         "lines": [
           1,
           1,
@@ -582,7 +506,7 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/test/controllers/orders_controller_test.rb": {
+      "/Users/ada/Documents/Week_12/betsy/test/controllers/orders_controller_test.rb": {
         "lines": [
           1,
           null,
@@ -712,7 +636,7 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/app/controllers/orders_controller.rb": {
+      "/Users/ada/Documents/Week_12/betsy/app/controllers/orders_controller.rb": {
         "lines": [
           1,
           1,
@@ -792,7 +716,7 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/test/controllers/products_controller_test.rb": {
+      "/Users/ada/Documents/Week_12/betsy/test/controllers/products_controller_test.rb": {
         "lines": [
           1,
           null,
@@ -958,12 +882,16 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/app/controllers/products_controller.rb": {
+      "/Users/ada/Documents/Week_12/betsy/app/controllers/products_controller.rb": {
         "lines": [
           1,
           null,
           1,
           1,
+          null,
+          1,
+          0,
+          null,
           null,
           1,
           0,
@@ -1055,7 +983,7 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/test/controllers/reviews_controller_test.rb": {
+      "/Users/ada/Documents/Week_12/betsy/test/controllers/reviews_controller_test.rb": {
         "lines": [
           1,
           null,
@@ -1132,7 +1060,7 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/app/controllers/reviews_controller.rb": {
+      "/Users/ada/Documents/Week_12/betsy/app/controllers/reviews_controller.rb": {
         "lines": [
           null,
           1,
@@ -1186,7 +1114,7 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/test/models/category_test.rb": {
+      "/Users/ada/Documents/Week_12/betsy/test/models/category_test.rb": {
         "lines": [
           1,
           null,
@@ -1197,22 +1125,24 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/app/models/category.rb": {
+      "/Users/ada/Documents/Week_12/betsy/app/models/category.rb": {
         "lines": [
+          1,
+          null,
           1,
           null,
           1,
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/app/models/application_record.rb": {
+      "/Users/ada/Documents/Week_12/betsy/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/test/models/merchant_test.rb": {
+      "/Users/ada/Documents/Week_12/betsy/test/models/merchant_test.rb": {
         "lines": [
           1,
           null,
@@ -1223,68 +1153,19 @@
           null,
           0,
           0,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
           0,
           0,
           null,
           0,
-          0,
-          0,
-          null,
-          1,
-          null,
-          0,
-          0,
           null,
           null,
-          0,
-          0,
-          0,
-          null,
-          1,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          1,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
           null,
           null,
-          null
-        ]
-      },
-      "/Users/humam.noor/code/projects/betsy/app/models/merchant.rb": {
-        "lines": [
-          1,
           null,
-          1,
           null,
-          1,
+          null,
+          null,
+          null,
           null,
           null,
           1,
@@ -1292,47 +1173,8 @@
           0,
           0,
           0,
-          0,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/humam.noor/code/projects/betsy/test/models/order_item_test.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          0,
           null,
           0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          1,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          1,
-          0,
-          null,
           null,
           null,
           null,
@@ -1351,130 +1193,6 @@
           0,
           0,
           null,
-          0,
-          0,
-          0,
-          null,
-          1,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/humam.noor/code/projects/betsy/app/models/order_item.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/humam.noor/code/projects/betsy/test/models/order_test.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/humam.noor/code/projects/betsy/app/models/order.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/humam.noor/code/projects/betsy/test/models/product_test.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          null,
-          0,
-          0,
           null,
           0,
           0,
@@ -1492,32 +1210,6 @@
           1,
           null,
           0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          1,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          1,
-          null,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          1,
-          null,
           0,
           0,
           null,
@@ -1529,48 +1221,60 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/app/models/product.rb": {
+      "/Users/ada/Documents/Week_12/betsy/app/models/merchant.rb": {
         "lines": [
           1,
           null,
           1,
-          1,
-          null,
-          1,
           null,
           1,
           1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          0,
           null,
           null,
           1,
           0,
           0,
-          null,
           0,
-          null,
           0,
-          null,
           0,
-          null,
-          null,
-          1,
           0,
           null,
           null,
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/test/models/review_test.rb": {
+      "/Users/ada/Documents/Week_12/betsy/test/models/order_item_test.rb": {
         "lines": [
           1,
           null,
           1,
+          1,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          1,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          1,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
           null,
           null,
           null,
@@ -1594,6 +1298,7 @@
           0,
           null,
           1,
+          null,
           0,
           0,
           null,
@@ -1606,7 +1311,256 @@
           null
         ]
       },
-      "/Users/humam.noor/code/projects/betsy/app/models/review.rb": {
+      "/Users/ada/Documents/Week_12/betsy/app/models/order_item.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/ada/Documents/Week_12/betsy/test/models/order_test.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/ada/Documents/Week_12/betsy/app/models/order.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/ada/Documents/Week_12/betsy/test/models/product_test.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          1,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          1,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          1,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          1,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          1,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/ada/Documents/Week_12/betsy/app/models/product.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/ada/Documents/Week_12/betsy/test/models/review_test.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          1,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/ada/Documents/Week_12/betsy/app/models/review.rb": {
         "lines": [
           1,
           null,
@@ -1620,6 +1574,6 @@
         ]
       }
     },
-    "timestamp": 1606189275
+    "timestamp": 1606242758
   }
 }

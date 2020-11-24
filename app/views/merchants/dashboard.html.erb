@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="small-6 large-centered columns" id="order_sum">
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <h3>Revenue</h3>
+        <p>Paid Order Revenue: </p>
+        <p>Completed Order Revenue: </p>
+        <p>Total Pending Order Revenue: </p>
+        <p>Total Cancelled Order Revenue: </p>
+        <p>Total Revenue*: </p>
+      </div>
+
+      <div class="small-12 medium-6 columns">
+        <h3>Orders</h3>
+        <p>Paid Orders: </p>
+        <p>Completed Orders: </p>
+        <p>Pending Orders: </p>
+        <p>Cancelled Orders: </p>
+        <p>Total Orders: </p>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="center">*Total Revenue calculated based on all successfully shipped items.</p>
+<table>
+  <tbody><tr>
+    <th>Order ID</th>
+    <th>Order Date</th>
+    <th>Items</th>
+    <th>
+      <ul class="dropdown menu" data-dropdown-menu="9t6ad2-dropdown-menu" role="menubar">
+        <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-haspopup="true" aria-expanded="false" aria-label="Status" data-is-click="false">
+          <a href="#" tabindex="0">Status</a>
+          <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu" style="">
+            <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item"><a href="/orders/index">all</a></li>
+            <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item"><a href="/orders/index?status=paid">paid</a></li>
+            <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item"><a href="/orders/index?status=complete">complete</a></li>
+            <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item"><a href="/orders/index?status=pending">pending</a></li>
+            <li role="menuitem" class="is-submenu-item is-dropdown-submenu-item"><a href="/orders/index?status=cancelled">cancelled</a></li>
+          </ul>
+        </li>
+      </ul>
+    </th>
+    <th>Order Total</th>
+  </tr>
+  </tbody>
+</table>
