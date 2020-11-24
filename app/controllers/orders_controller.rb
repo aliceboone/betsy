@@ -56,7 +56,7 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    if @cart.checkout
+    if checkout
     else
       flash[:error] = @cart.errors.messages[:base]&.first # if base isn't set then it will return nil ortherwise it will return the first value
     end
