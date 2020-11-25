@@ -5,10 +5,10 @@
       <div class="small-12 medium-6 columns">
         <h3>Revenue</h3>
 
-        <p>Paid Order Revenue: </p>
-        <p>Completed Order Revenue: </p>
+        <p>Paid Order Revenue: <strong>$<%='%.2f' %  @merchant.total_revenue(@orders_paid) %></strong></p>
+        <p>Completed Order Revenue: <strong>$<%='%.2f' %  @merchant.total_revenue(@orders_complete) %></strong></p>
 
-        <p>Total Revenue*: </p>
+        <p>Total Revenue*: <strong>$<%='%.2f' %  (@merchant.total_revenue(@orders_paid) + @merchant.total_revenue(@orders_complete)) %></strong></p>
       </div>
       <div class="small-12 medium-6 columns">
         <h3>Orders</h3>
