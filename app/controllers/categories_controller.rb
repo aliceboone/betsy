@@ -35,8 +35,10 @@ class CategoriesController < ApplicationController
     if @category.save
       saved_notice
       redirect_to category_path(@category.id)
+      return
     else
       not_saved_notice
+      render :new
     end
   end
 

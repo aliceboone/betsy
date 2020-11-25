@@ -1,23 +1,54 @@
-<h2>Checkout</h2>
+<section class="content">
+  <section>
+    <h4 class="mb-3">Billing address</h4>
 
-<%= form_with model: @cart do |f| %>
-<%= f.label :email %>
-<%= f.text_field :email %>
-  <br>
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-  <br>
-  <%= f.label :credit_name %>
-  <%= f.text_field :credit_name %>
-  <br>
-  <%= f.label :credit_expire %>
-  <%= f.text_field :credit_expire %>
-  <br>
-  <%= f.label :security_code %>
-  <%= f.text_field :security_code %>
-  <br>
-  <%= f.label :zip %>
-  <%= f.text_field :zip %>
-  <br>
-<%= f.submit "Proceed to Checkout", class:"btn btn-primary" %>
-<% end %>
+    <%= form_with model: @cart do |f|  %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control'%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form-control'%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address %>
+      <%= f.text_field :address, class: 'form-control'%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :zip %>
+      <%= f.text_field :zip, class: 'form-control'%>
+    </div>
+
+    <h4 class="mb-3">Payment</h4>
+
+    <div class="form-group">
+      <%= f.label :credit_name %>
+      <%= f.text_field :credit_name, class: 'form-control'%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :credit_name_number %>
+      <%= f.text_field :credit_name_number, class: 'form-control'%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :credit_expire %>
+      <%= f.text_field :credit_expire, class: 'form-control'%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :security_code %>
+      <%= f.text_field :security_code , class: 'form-control'%>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "Proceed to Checkout", class:"btn btn-primary" %>
+      <%= link_to 'Back to cart', cart_path, class: "btn btn-secondary" %>
+    </div>
+    <% end %>
+   </section>
+</section>
