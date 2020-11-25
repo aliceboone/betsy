@@ -26,3 +26,18 @@ item_seven:
   product_id: 6
   order_id: 4
   quantity: 9
+
+add_product_test_order_item:
+  product: add_product_test_product
+  order: add_product_test_with_one_item
+  quantity: 1
+
+inventory_zero_test_order_item:
+  product: inventory_zero_test_product
+  order: inventory_zero_test_with_one_item
+  quantity: 0
+
+inventory_decrease_test_order_item:
+  product: inventory_decrease_test_product
+  order: inventory_decrease_test_with_one_item
+  quantity: 0

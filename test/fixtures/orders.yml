@@ -8,3 +8,14 @@ order_four:
   status: pending
 order_five:
   status: pending
+
+add_product_test_empty_order:
+  status: pending
+add_product_test_with_one_item:
+  status: pending
+
+inventory_zero_test_empty_order:
+  status: pending
+
+inventory_decrease_test_empty_order:
+  status: pending

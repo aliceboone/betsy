@@ -68,7 +68,6 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:email, :address, :credit_name, :credit_expire, :security_code, :zip)
   end
 
-
   def find_order
     @order = Order.find_by_id(params[:id])
   end

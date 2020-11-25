@@ -22,3 +22,21 @@ product_six:
   name: logitech mouse
   price: 30
   merchant: merch_three
+
+add_product_test_product:
+    name: add_product_test_product
+    price: 12
+    inventory: 15
+    merchant: add_product_test_merchant
+
+inventory_zero_test_product:
+  name: inventory_zero_test_product
+  price: 10
+  inventory: 0
+  merchant: inventory_zero_test_merchant
+
+inventory_decrease_test_product:
+  name: inventory_decrease_test_product
+  price: 20
+  inventory: 3
+  merchant: inventory_decrease_test_merchant

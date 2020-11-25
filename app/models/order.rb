@@ -14,7 +14,9 @@ class Order < ApplicationRecord
     order_item.save
   end
 
-
+  #before updating, compare soon to be quantity with the existing inventory
+  # at the least return false - add to errors message (self.errors = gives you message)
+  #check the stock to inventory
 
   def self.make_cart
     Order.new(status: 'pending')
@@ -25,7 +27,7 @@ class Order < ApplicationRecord
       errors.add(:base, :invalid_order , message:'The order is not valid' )
       return false
     end
-
+    # :base - in the errors collection key: error message (base = key)
     order_items.each do |order_item|
       if order_item.quantity > order_item.product.inventory
         errors.add(:base, :invalid_order, message:'The quantity of a purchased order should not be more than product stock')
@@ -40,5 +42,4 @@ class Order < ApplicationRecord
     self.status = 'paid'
     self.save
   end
-
 end

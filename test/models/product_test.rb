@@ -2,26 +2,42 @@ require "test_helper"
 
 describe Product do
   describe 'relations' do
-    # has merchant_id
-    describe 'merchants' do
-      it 'can access correlating merchant' do
-        merchant = merchants(:merch_two)
-        product = products(:product_three)
+    it 'can access correlating merchant' do
+      merchant = merchants(:merch_two)
+      product = products(:product_three)
 
-        expect(product.merchant_id).must_equal merchant.id
-      end
-
-      it "can have many categories" do
-        skip
-        #take a product that has a category and set it to must have num
-      end
-
-      it "can have no categories" do
-        skip
-        #take a product with no category and expect 0
-      end
+      expect(product.merchant_id).must_equal merchant.id
     end
   end
+
+  describe 'quantity & inventory' do
+    it 'can determine 0 inventory' do
+      # arrange
+      product = products(:inventory_zero_test_product)
+      #act & #assert
+      expect(product.out_of_stock).must_equal true
+    end
+
+    it 'can decrease inventory' do
+      # arrange
+      product = products(:inventory_zero_test_product)
+      # act
+      product.decrease_inventory
+      # assert
+    end
+
+    it "can have many categories" do
+      skip
+      #take a product that has a category and set it to must have num
+    end
+
+    it "can have no categories" do
+      skip
+      #take a product with no category and expect 0
+    end
+  end
+
+
 
   describe "validations" do
       it "product must have a name" do

@@ -23,3 +23,15 @@ merch_five:
   email: myotherthird@petfinder.com
   provider: github
   uid: 1234525
+
+add_product_test_merchant:
+  username: add_product_test_merchant
+  email: add_product_test_merchant@finder.com
+
+inventory_zero_test_merchant:
+  username: inventory_zero_test_merchant
+  email: inventory_zero_test_merchant@finder.com
+
+inventory_decrease_test_merchant:
+  username: inventory_decrease_test_merchant
+  email: inventory_decrease_test_merchant@finder.com

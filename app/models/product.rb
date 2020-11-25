@@ -29,5 +29,4 @@ class Product < ApplicationRecord
   def decrease_inventory(amount_to_decrease)
     self.inventory -= amount_to_decrease
   end
-
 end
