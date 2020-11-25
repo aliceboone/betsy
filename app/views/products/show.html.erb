@@ -42,6 +42,7 @@
             <% end %>
           <% end %>
           <% if current_user && (@product.merchant == current_user) %>
+            <%= link_to "New Product", new_product_path, class: "btn btn primary"%>
             <%= link_to "Edit", edit_product_path(@product.id), class: "btn btn-secondary"%>
             <%= link_to "Discontinue", product_path(@product.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"%>
           <% end %>
