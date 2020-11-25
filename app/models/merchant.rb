@@ -15,10 +15,14 @@ class Merchant < ApplicationRecord
     return merchant
   end
 
-  def total_revenue
+  def total_revenue(order_status)
     sum = 0
-    merchant.order_items.each do |order_item|
-      sum += order_item.single_item_total_cost
+    order_status.all.each do |order|
+      order.order_items.each do |order_item|
+        if order_item.product.merchant_id == self.id
+          sum += order_item.single_item_total_cost
+        end
+      end
     end
     return sum
   end
