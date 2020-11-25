@@ -75,7 +75,11 @@
         <td><%= order.address %></td>
         <td><%= order.zip %></td>
         <td> <%= order.email %></td>
-        <td><%= order.status %></td>
+        <td>
+          <%=form_for order do |f| %>
+            <%= f.select :status, %w[paid completed cancelled], {}, :onchange => 'this.form.submit()' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
     </tbody>

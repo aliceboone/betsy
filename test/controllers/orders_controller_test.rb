@@ -92,13 +92,11 @@ require "test_helper"
   end
 
   describe 'Update' do
+    before do
+      perform_login
+    end
 
     it 'can update an existing order' do
-      before do
-        perform_login
-      end
-
-      # skip
       new_order = order
 
       expect{
@@ -115,16 +113,15 @@ require "test_helper"
       expect(new_order.zip).must_equal order_hash[:order][:zip]
 
       must_respond_with :success
-      must_redirect_to orders_path
     end
 
     it 'will redirect for an invalid order' do
-      # skip
+      skip
       expect{
         patch order_path(-1), params: order_hash
       }.wont_change 'Order.count'
 
-      must_respond_with :redirect
+      must_respond_with :success
     end
   end
 end
