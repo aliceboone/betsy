@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
       redirect_to product_path(product)
       return
     end
+
     @review = Review.new(product: product)
   end
 
