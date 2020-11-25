@@ -5,31 +5,29 @@
       <div class="small-12 medium-6 columns">
         <h3>Revenue</h3>
 
-        <p>Paid Order Revenue: </p>
-        <p>Completed Order Revenue: </p>
+        <p>Paid Order Revenue: <strong>$<%='%.2f' %  @merchant.total_revenue(@orders_paid) %></strong></p>
+        <p>Completed Order Revenue: <strong>$<%='%.2f' %  @merchant.total_revenue(@orders_complete) %></strong></p>
 
-        <p>Total Revenue*: </p>
+        <p>Total Revenue*: <strong>$<%='%.2f' %  (@merchant.total_revenue(@orders_paid) + @merchant.total_revenue(@orders_complete)) %></strong></p>
       </div>
       <div class="small-12 medium-6 columns">
         <h3>Orders</h3>
+
         <p>
           Paid Orders:
           <% if @orders_paid.empty? %>
             N/A
           <% else %>
-            <%= @orders_paid.each do |order| %>
-              ID: <%= order.id %>, CREATED <%= order.created_at.strftime("%Y-%m-%d") %>
-            <% end %>
+            <%= @orders_paid.count %>
           <% end %>
         </p>
+
         <p>
           Completed Orders:
           <% if @orders_complete.empty? %>
             N/A
           <% else %>
-            <%= @orders_complete.each do |order| %>
-              ID: <%= order.id %>, CREATED <%= order.created_at.strftime("%Y-%m-%d") %>
-            <% end %>
+            <%= @orders_complete.count %>
           <% end %>
         </p>
         <p>
@@ -37,9 +35,7 @@
           <% if @orders_cancelled.empty? %>
             N/A
           <% else %>
-            <%= @orders_cancelled.each do |order| %>
-              ID: <%= order.id %>, CREATED <%= order.created_at.strftime("%Y-%m-%d") %>
-            <% end %>
+            <%= @orders_cancelled.count %>
           <% end %>
         </p>
         <p>
@@ -47,9 +43,7 @@
           <% if @orders.empty? %>
             This merchant had no orders on record.
           <% else %>
-            <%= @orders.each do |order| %>
-              ID: <%= link_to order.id, order_path(id: order.id) %>, CREATED <%= order.created_at.strftime("%m-%d-%Y") %>,
-            <% end %>
+            <%= @orders.count %>
           <% end %>
         </p>
       </div>
@@ -57,17 +51,37 @@
   </div>
 </div>
 <p class="center">*Total Revenue calculated based on all successfully shipped items.</p>
-<table>
-  <tbody><tr>
-    <th>Order ID</th>
-    <th>Order Date</th>
-    <th>Items</th>
-    <th>
-    </th>
-    <th>Order Total</th>
-  </tr>
-  </tbody>
-</table>
+
+  <h1 class="catalog__header">Order details</h1>
+  <hr>
+  <table class="table" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+      <th scope="col", class="th-sm cart__text">Order Number</th>
+      <th scope="col", class="th-sm cart__text">Date</th>
+      <th scope="col", class="th-sm cart__text">Credit Card Name</th>
+      <th scope="col", class="th-sm cart__text">Address</th>
+      <th scope="col", class="th-sm cart__text">Zip Code</th>
+      <th scope="col", class="th-sm cart__text">Email</th>
+      <th scope="col", class="th-sm cart__text">Order Status</th>
+    </tr>
+    </thead>
+    <tbody>
+  <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.created_at.to_date %></td>
+        <td><%= order.credit_name %></td>
+        <td><%= order.address %></td>
+        <td><%= order.zip %></td>
+        <td> <%= order.email %></td>
+        <td>
+          <%=form_for order do |f| %>
+            <%= f.select :status, %w[paid completed cancelled], {}, :onchange => 'this.form.submit()' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </section>
-
-

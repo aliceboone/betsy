@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="col">
-        <h2 class="catalog__description-title">$<%= number_with_precision(@product.price, :precision => 2, :delimiter => ',') %></h2>
+        <h2 class="catalog__description-title">$<%= number_with_precision(@product.price.to_f, :precision => 2, :delimiter => ',') %></h2>
         <h2 class="text-uppercase catalog__description-title">Description</h2>
         <div class="catalog__description-text"><%= @product.description %></div>
         <div class="py-3">
@@ -41,7 +41,8 @@
               <% end %>
             <% end %>
           <% end %>
-          <% if current_user %>
+          <% if current_user && (@product.merchant == current_user) %>
+            <%= link_to "New Product", new_product_path, class: "btn btn primary"%>
             <%= link_to "Edit", edit_product_path(@product.id), class: "btn btn-secondary"%>
             <%= link_to "Discontinue", product_path(@product.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"%>
           <% end %>

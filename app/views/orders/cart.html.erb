@@ -4,6 +4,7 @@
     <% if @order_items.count == 0 %>
       <hr>
       <h2 class="cart__text">Cart is empty </h2>
+      <%= link_to 'Start Shopping', products_path, class: "btn btn-secondary" %></li>
     </section>
       </section>
     <% else %>

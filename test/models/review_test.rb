@@ -1,6 +1,10 @@
 require "test_helper"
 
 describe Review do
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
   describe "validations" do
     it "review rating must be a number" do
       # Arrange

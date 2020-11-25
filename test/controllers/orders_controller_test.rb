@@ -65,7 +65,7 @@ require "test_helper"
 
   describe 'Show' do
     it 'can get a valid order' do
-      skip
+      # skip
       order
 
       get order_path(order.id)
@@ -92,9 +92,11 @@ require "test_helper"
   end
 
   describe 'Update' do
+    before do
+      perform_login
+    end
 
     it 'can update an existing order' do
-      skip
       new_order = order
 
       expect{
@@ -110,8 +112,7 @@ require "test_helper"
       expect(new_order.security_code).must_equal order_hash[:order][:security_code]
       expect(new_order.zip).must_equal order_hash[:order][:zip]
 
-      must_respond_with :redirect
-      must_redirect_to orders_path
+      must_respond_with :success
     end
 
     it 'will redirect for an invalid order' do
@@ -120,7 +121,7 @@ require "test_helper"
         patch order_path(-1), params: order_hash
       }.wont_change 'Order.count'
 
-      must_respond_with :redirect
+      must_respond_with :success
     end
   end
 end
