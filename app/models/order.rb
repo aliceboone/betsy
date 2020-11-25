@@ -53,4 +53,8 @@ class Order < ApplicationRecord
         order_item.product.price * order_item.quantity
       end
   end
+
+  def self.merchant_totals
+
+  end
 end
