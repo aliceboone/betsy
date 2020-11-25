@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <header>
@@ -13,7 +14,7 @@
       <div class="mr-auto p-2">
         <h1><%= link_to "AloeBae", root_path, class: "header-logo" %></h1>
         <section class="header-byline">
-          <p class="lead">a one stop shop for all your aloe vera favorites</p>
+          <p class="lead">one stop shop for all your aloe vera favorites</p>
         </section>
       </div>
     </div>
@@ -77,7 +78,7 @@
             </li>
             <li class="nav-item-right">
               <i class="fa fa-custom fa-shopping-cart">
-                <%= link_to image_tag("http://www.pngall.com/wp-content/uploads/2016/04/Cart-Free-Download-PNG.png", class: "cart-img"), cart_path %>
+                <%= link_to image_tag("https://i.ibb.co/K5f9FQ6/Cart-Free-Download-PNG.png", class: "cart-img"), cart_path %>
               </i>
             </li>
           </ul>

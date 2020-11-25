@@ -92,6 +92,10 @@ class MerchantsController < ApplicationController
 
   def dashboard
     @merchant = @current_user
+    @orders = Order.merchant_orders(@merchant)
+    @orders_paid = @orders.where(status: 'paid')
+    @orders_complete = @orders.where(status: 'complete')
+    @orders_cancelled = @orders.where(status: 'cancelled')
   end
 
   private

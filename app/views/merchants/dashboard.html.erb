@@ -7,17 +7,51 @@
 
         <p>Paid Order Revenue: </p>
         <p>Completed Order Revenue: </p>
-        <p>Total Pending Order Revenue: </p>
-        <p>Total Cancelled Order Revenue: </p>
+
         <p>Total Revenue*: </p>
       </div>
       <div class="small-12 medium-6 columns">
         <h3>Orders</h3>
-        <p>Paid Orders: </p>
-        <p>Completed Orders: </p>
-        <p>Pending Orders: </p>
-        <p>Cancelled Orders: </p>
-        <p>Total Orders: </p>
+        <p>
+          Paid Orders:
+          <% if @orders_paid.empty? %>
+            N/A
+          <% else %>
+            <%= @orders_paid.each do |order| %>
+              ID: <%= order.id %>, CREATED <%= order.created_at.strftime("%Y-%m-%d") %>
+            <% end %>
+          <% end %>
+        </p>
+        <p>
+          Completed Orders:
+          <% if @orders_complete.empty? %>
+            N/A
+          <% else %>
+            <%= @orders_complete.each do |order| %>
+              ID: <%= order.id %>, CREATED <%= order.created_at.strftime("%Y-%m-%d") %>
+            <% end %>
+          <% end %>
+        </p>
+        <p>
+          Cancelled Orders:
+          <% if @orders_cancelled.empty? %>
+            N/A
+          <% else %>
+            <%= @orders_cancelled.each do |order| %>
+              ID: <%= order.id %>, CREATED <%= order.created_at.strftime("%Y-%m-%d") %>
+            <% end %>
+          <% end %>
+        </p>
+        <p>
+          Total Orders:
+          <% if @orders.empty? %>
+            This merchant had no orders on record.
+          <% else %>
+            <%= @orders.each do |order| %>
+              ID: <%= link_to order.id, order_path(id: order.id) %>, CREATED <%= order.created_at.strftime("%m-%d-%Y") %>,
+            <% end %>
+          <% end %>
+        </p>
       </div>
     </div>
   </div>

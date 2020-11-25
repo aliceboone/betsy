@@ -53,4 +53,13 @@ class Order < ApplicationRecord
         order_item.product.price * order_item.quantity
       end
   end
+
+  def self.merchant_orders(merchant)
+    products = merchant.products
+    order_items = OrderItem.where(product: products)
+    orders = Order.where(order_items: order_items)
+
+    return orders.where.not(status: 'pending')
+
+  end
 end
