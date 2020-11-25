@@ -6,13 +6,13 @@ Congratulations! You're submitting your assignment. Please reflect on the assign
 
 Prompt | Response
 --- | ---
-Each team member: what is one thing you were primarily responsible for that you're proud of? | 
-Each team member: what is one thing you were primarily responsible for that you would like targeted feedback on? | 
-How did your team break up the work to be done? | 
-How did your team utilize git to collaborate? | 
-What did your group do to try to keep your code DRY while many people collaborated on it? | 
-What was a technical challenge that you faced as a group? | 
-What was a team/personal challenge that you faced as a group? | 
-What was your application's ERD? (upload this to Google Drive, change the share settings to viewable by everyone with a link, and include a link) | 
-What is your Trello URL? | 
-What is the Heroku URL of your deployed application? | 
+Each team member: what is one thing you were primarily responsible for that you're proud of? | Alice: CSS/Views/& Styling, Schanen: OAuth/External technologies, Noor: Cart functionality, Blaine:
+Each team member: what is one thing you were primarily responsible for that you would like targeted feedback on? | Noor & Blaine: Cart, make it work., Alice: Login/Authentication, Schanen:
+How did your team break up the work to be done? | We divided things up on Trello, and delegated during standups. Team members picked features they wanted to work on.
+How did your team utilize git to collaborate? | Our team utilized pull requests.  We would create
+What did your group do to try to keep your code DRY while many people collaborated on it? | Created helper methods, used before, lets, & fixtures.
+What was a technical challenge that you faced as a group? | Collectively understanding an working through the merchant dashboard model logic.
+What was a team/personal challenge that you faced as a group? | Scheduling, organization, exhaustion, git-hygiene, communication, and communication.
+What was your application's ERD? (upload this to Google Drive, change the share settings to viewable by everyone with a link, and include a link) | https://drive.google.com/file/d/1xz9bvimUd1qiRrT2hLy6LuM77IcK3pVg/view?usp=sharing
+What is your Trello URL? | https://trello.com/b/lWgtnyJN/besty-fun-project
+What is the Heroku URL of your deployed application? | https://aloebae-app.herokuapp.com/
