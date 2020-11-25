@@ -20,11 +20,15 @@
                   </section>
                   <div class="catalog__body-text">
                     <th>Price:</th>
-                      $<%= number_with_precision(product.price, :precision => 2, :delimiter => ',')%>
+                      $<%= '%.2f' % product.price%>
                   </div>
                   <div class="catalog__body-text">
                     <th>Rating:</th>
                     <td><%= product.average_rating.nil? ? nil :product.average_rating.round(2) %></td>
+                  </div>
+                  <div class="catalog__body-text">
+                    <th>Stock:</th>
+                    <td><%= product.inventory%></td>
                   </div>
                 </div>
               </div>
@@ -35,7 +39,7 @@
     <% else %>
       <h3 class="catalog__header">No products in the system!</h3>
     <% end %>
-    <%= link_to "Add a new Category", new_category_path %>
-    <%= link_to "Add a new Product", new_product_path %>
+    <%= link_to "Add a new Category", new_category_path, class: "btn btn-secondary"%>
+    <%= link_to "Add a new Product", new_product_path, class: "btn btn-secondary"%>
   </section>
 </section>
