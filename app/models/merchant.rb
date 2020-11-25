@@ -15,14 +15,4 @@ class Merchant < ApplicationRecord
     return merchant
   end
 
-  def revenue(orders, merchant)
-    order_items = OrderItem.where(merchant: merchant)
-
-    order_items.each do |item|
-      item.price * item.quantity
-
-
-  end
-  end
-
 end
