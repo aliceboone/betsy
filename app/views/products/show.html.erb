@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="col">
-        <h2 class="catalog__description-title">$<%= number_with_precision(@product.price, :precision => 2, :delimiter => ',') %></h2>
+        <h2 class="catalog__description-title">$<%= number_with_precision(@product.price.to_f, :precision => 2, :delimiter => ',') %></h2>
         <h2 class="text-uppercase catalog__description-title">Description</h2>
         <div class="catalog__description-text"><%= @product.description %></div>
         <div class="py-3">
