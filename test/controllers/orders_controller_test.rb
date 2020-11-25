@@ -94,6 +94,10 @@ require "test_helper"
   describe 'Update' do
 
     it 'can update an existing order' do
+      before do
+        perform_login
+      end
+
       # skip
       new_order = order
 
@@ -110,7 +114,7 @@ require "test_helper"
       expect(new_order.security_code).must_equal order_hash[:order][:security_code]
       expect(new_order.zip).must_equal order_hash[:order][:zip]
 
-      must_respond_with :redirect
+      must_respond_with :success
       must_redirect_to orders_path
     end
 
