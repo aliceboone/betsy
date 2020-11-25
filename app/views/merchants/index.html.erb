@@ -14,13 +14,15 @@
                 </div>
                 <div class="card-title text-uppercase pt-3">
                   <% if merchant.id == session[:merchant_id] %>
-                    <section class="catalog__card-title-container">
-                      <h5> <%= button_to merchant.username, merchant_path(merchant.id), method: :get, class: "catalog__card-title-button text-left"%> </h5>
+                    <section class="catalog__card-title-container grey">
+                      <h5> <%= link_to "LOGGED IN SHOP", products_path(username: merchant.username), class: "catalog__card-title-button text-left"%> </h5>
+
+                    </section>
+                  <% else %>
+                    <section class="catalog__card-title-container green">
+                      <h5> <%= link_to "#{merchant.username}'s Shop", products_path(username: merchant.username), class: "catalog__card-title-button text-left"%> </h5>
                     </section>
                   <% end %>
-                  <section class="catalog__card-title-container">
-                    <h5> <%= link_to "#{merchant.username}'s Shop", products_path(username: merchant.username), class: "catalog__card-title-button text-left"%> </h5>
-                  </section>
                 </div>
               </div>
             </div>

@@ -50,7 +50,7 @@ class Order < ApplicationRecord
 
   def total_orders
     return order_items.sum do |order_item|
-        order_item.product.price * order_item.quantity
+        order_item.product.price.to_f * order_item.quantity
       end
   end
 
