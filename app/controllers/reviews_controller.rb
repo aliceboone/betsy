@@ -37,7 +37,6 @@ class ReviewsController < ApplicationController
       saved_notice
       redirect_to product_path(@review.product_id)
     else
-      not_saved_notice
       render :new
     end
   end

@@ -17,6 +17,10 @@ describe CategoriesController do
   }
 
   describe "new" do
+    before do
+      perform_login
+    end
+
     it "can get the new category page" do
 
       # Act
@@ -28,6 +32,10 @@ describe CategoriesController do
   end
 
   describe 'Create' do
+    before do
+      perform_login
+    end
+
     it 'can create a new category' do
 
       expect{

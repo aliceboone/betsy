@@ -22,7 +22,7 @@ describe OrderItemsController do
   describe "Destroy" do # to do later after finish
 
     it "delete a product from the shopping cart and redirect" do
-      skip
+
       post product_order_items_path(products(:product_one))
       id = Product.find_by_id(products(:product_one).id)
       expect {
@@ -32,13 +32,11 @@ describe OrderItemsController do
 
   describe "Add Quantity" do
     it "add quantity of a product in a shopping cart" do
-      skip
     end
   end
 
   describe "reduce Quantity" do
     it "reduce quantity of a product in a shopping cart" do
-      skip
     end
   end
 

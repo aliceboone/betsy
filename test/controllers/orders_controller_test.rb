@@ -65,7 +65,7 @@ require "test_helper"
 
   describe 'Show' do
     it 'can get a valid order' do
-      skip
+      # skip
       order
 
       get order_path(order.id)
@@ -94,7 +94,7 @@ require "test_helper"
   describe 'Update' do
 
     it 'can update an existing order' do
-      skip
+      # skip
       new_order = order
 
       expect{
@@ -115,7 +115,7 @@ require "test_helper"
     end
 
     it 'will redirect for an invalid order' do
-      skip
+      # skip
       expect{
         patch order_path(-1), params: order_hash
       }.wont_change 'Order.count'
