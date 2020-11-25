@@ -9,10 +9,6 @@ class ApplicationController < ActionController::Base
     redirect_to products_path
   end
 
-  def not_saved_notice
-    flash.now[:notice] = "Could not create"
-  end
-
   def saved_notice
     flash[:success] = "Successfully created"
   end

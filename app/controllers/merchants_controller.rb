@@ -86,6 +86,14 @@ class MerchantsController < ApplicationController
     redirect_to root_path
   end
 
+  def profile
+    @merchant = @current_user
+  end
+
+  def dashboard
+    @merchant = @current_user
+  end
+
   private
 
   def merchant_params

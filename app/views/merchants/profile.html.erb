@@ -1,0 +1,30 @@
+<section class="content">
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="embed-responsive embed-responsive-1by1">
+          <img class="card-img-top embed-responsive-item rounded-0" src='<%= %>'>
+        </div>
+        <%= link_to "Manage Products", products_path(username: @merchant.username) %>
+      </div>
+      <div class="col-md-3">
+        <div class="embed-responsive embed-responsive-1by1">
+          <img class="card-img-top embed-responsive-item rounded-0" src='<%= %>'>
+        </div>
+        <%=link_to "Manage Profile", edit_merchant_path(@merchant.id) %>
+      </div>
+      <div class="col-md-3">
+        <div class="embed-responsive embed-responsive-1by1">
+          <img class="card-img-top embed-responsive-item rounded-0" src='<%= %>'>
+        </div>
+        <%= link_to "Manage Orders", dashboard_path %>
+      </div>
+        <div class="col-md-3">
+          <div class="embed-responsive embed-responsive-1by1">
+            <img class="card-img-top embed-responsive-item rounded-0" src='<%= %>'>
+          </div>
+        <%= link_to "Shopping", products_path %>
+      </div>
+    </div>
+  </section>
+</section>

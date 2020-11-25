@@ -1,5 +1,4 @@
 <section class="content">
-  <%# if !@product.discontinued %>
   <section class="px-5">
     <h3>Name: <%= @product.name %> </h3>
     <h5 class="catalog__detail-header">Rating: <%= @product.average_rating%>/5 </h5>
@@ -65,5 +64,4 @@
       <h6 class="catalog__review-text">No reviews yet</h6>
     <% end %>
   </section>
-  <%# end %>
 </section>

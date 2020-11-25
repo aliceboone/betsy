@@ -1,11 +1,14 @@
-<h2>Order Summery</h2>
+<section class="content" >
+  <h2>Order Summary</h2>
 
 <% if @order.order_items.empty? %>
   Cart is Empty
   <% else %>
   <ul>
   <% @order.order_items.each do |order_item| %>
-    <li><%= order_item.product.name %> with a quantity of <%= order_item.quantity %></li>
-  <% end %>
+    <li><%= link_to order_item.product.name, order_item.product %>, quantity: <strong><%= order_item.quantity  %></strong>, price: <strong>$<%='%.2f' %  (order_item.single_item_total_cost).to_f %></li>
   </ul>
-<% end %>
+    <% end %>
+    <strong>Total cost: $<%= '%.2f' % @order.total_orders %></strong>
+<%end %>
+</section>
