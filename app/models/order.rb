@@ -54,7 +54,11 @@ class Order < ApplicationRecord
       end
   end
 
-  def self.merchant_totals
+  def self.merchant_orders(merchant)
+    products = merchant.products
+    order_items = OrderItem.where(product: products)
+    orders = Order.where(order_items: order_items)
 
+    return orders
   end
 end
