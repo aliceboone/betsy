@@ -1,18 +1,59 @@
-<h2>Your Cart</h2>
-
-<% if @order.nil? %>
-  Cart is Empty
-  <% else %>
-
-  <ul>
-  <% @order_items.each do |order_item| %>
-    <li><%= link_to order_item.product.name, order_item.product %>, quantity: <strong><%= order_item.quantity  %></strong>, price: <strong>$<%='%.2f' %  (order_item.single_item_total_cost).to_f %><li class="order-item-action-in-cart"></strong><span id="delete-from-order"><%= link_to "Delete ", order_item_path(order_item), method: :delete
-  %></span> | <%= link_to "Add one", order_item_add_path(:id => order_item), method: :post %> |
-      <%= link_to "Reduce one", order_item_reduce_path(:id => order_item), method: :post%></li></li>
-  <% end %>
-  </ul>
-<% end %>
-<strong>Total cost: $<%= '%.2f' % @cart.total_orders %></strong>
-<br>
-<%= link_to 'Checkout', edit_order_path(@cart), class: "btn btn-primary"%>
-
+<section class="content px-5 mx-5">
+  <section class='order'>
+    <h2 class="h-center-text cart__title">YOUR CART</h2>
+    <% if @order_items.count == 0 %>
+      <hr>
+      <h2 class="cart__text">Cart is empty </h2>
+    </section>
+      </section>
+    <% else %>
+      <table class="table" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+          <th scope="col", class="th-sm cart__text"></th>
+          <th scope="col", class="th-sm cart__text">Product</th>
+          <th scope="col", class="th-sm cart__text">Quantity</th>
+          <th scope="col", class="th-sm cart__text">Item Price</th>
+          <th scope="col", class="th-sm cart__text">Item Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @order_items.each do |order_item| %>
+          <tr>
+            <td width=10%>
+              <%= image_tag "#{order_item.product.photo}", alt: "#{order_item.product.name}", class: "img-fluid img-thumbnail rounded-0" %>
+            </td>
+            <td class="text-just-center cart">
+              <h4 class="cart__text"><%= link_to order_item.product.name, product_path(order_item.product.id), class: "text-dark, cart__text" %></h4>
+              <li class="order-item-action-in-cart"></strong><span id="delete-from-order">
+                <%= link_to "Delete ", order_item_path(order_item), method: :delete %></span> |
+                <%= link_to "Add one", order_item_add_path(:id => order_item), method: :post %> |
+                <%= link_to "Reduce one", order_item_reduce_path(:id => order_item), method: :post%></li>
+              </li>
+            </td>
+            <td width=10% class="mr-4 pr-4">
+              <%= order_item.quantity %>
+            </td>
+            <td class="text-just-center">
+              <p class="cart__text"><span class='text-bold cart__text'> $<%= order_item.product.price %> </span></p>
+            </td>
+            <td class="text-just-center">
+              <p class="cart__text"><span class='text-bold cart__text'> $<%='%.2f' %  (order_item.single_item_total_cost).to_f %> </span></p>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+      <hr class="hr-total">
+      <section class="d-flex align-items-end flex-column pl-5">
+        <div class="mb-auto p-2">
+          <strong>Total cost: $<%= '%.2f' % @cart.total_orders %></strong>
+        </div>
+      </section>
+    <ul>
+      <%= link_to 'Checkout', edit_order_path(@cart), class: "btn btn-primary"%></li>
+      <%= link_to 'Back to products', products_path, class: "btn btn-secondary" %></li>
+    </ul>
+  </section>
+    <%end %>
+</section>

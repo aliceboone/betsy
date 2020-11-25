@@ -1,0 +1,15 @@
+<section class="content confirm-info">
+  <h1 class="catalog__header">Order detail page</h1>
+  <hr>
+  <div class="card rounded-0 cart__text" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Name: <%= @order.credit_name %></li>
+      <li class="list-group-item">Shipping Address: <%= @order.address %></li>
+      <li class="list-group-item">Zip Code: <%= @order.zip %></li>
+      <li class="list-group-item">Email: <%= @order.email %></li>
+      <li class="list-group-item">Order Number: <%= @order.id %></li>
+      <li class="list-group-item">Purchased On: <%= @order.created_at.to_date %></li>
+      <li class="list-group-item">Order Status: <%= @order.status %></li>
+    </ul>
+  </div>
+</section>

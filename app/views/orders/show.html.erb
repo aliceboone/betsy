@@ -1,13 +1,65 @@
-<section class="content" >
-  <h2>Order Summary</h2>
+<section class="content">
+  <h1 class="cart__text">Order Summary</h1>
+  <hr>
 
-<% if @order.order_items.empty? %>
-  Cart is Empty
+  <% if @order.order_items.empty? %>
+    <hr>
+    <h2 class="cart__text">Your order is empty. </h2>
+    </section>
+    </section>
   <% else %>
-  <ul>
-  <% @order.order_items.each do |order_item| %>
-    <li><%= order_item.product.name %> with a quantity of <%= order_item.quantity %></li>
+    <h3 class="cart__text">Your Order's Current status: <%= @order.status %> </h3>
+      <h3 class="cart__text">Purchase made on: <%= @order.created_at.to_date  %></h3>
+        <table class="table" cellspacing="0" width="100%">
+          <thead>
+          <tr>
+            <th scope="col", class="th-sm cart__text">Product</th>
+            <th scope="col", class="th-sm"></th>
+            <th scope="col", class="th-sm cart__text">Quantity</th>
+            <th scope="col", class="th-sm cart__text">Item Price</th>
+            <th scope="col", class="th-sm cart__text">Item Total</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <% @order.order_items.each do |order_item| %>
+            <tr>
+              <td width=10%>
+                <%= image_tag "#{order_item.product.photo}", alt: "#{order_item.product.name}", class: "img-fluid img-thumbnail rounded-0" %>
+              </td>
+
+              <td class="text-just-center cart">
+                <h4 class="cart__text"><%= link_to order_item.product.name, order_item.product, class: "text-dark, cart__text" %></h4>
+              </td>
+
+              <td width=10% class="mr-4 pr-4">
+                <p class = "cart__text">
+                  <%= order_item.quantity %>
+                </p>
+              </td>
+
+              <td class="text-just-center">
+                <p class="cart__text"><span class='text-bold cart__text'> $<%= order_item.product.price %> </span></p>
+              </td>
+
+              <td class="text-just-center">
+                <p class="cart__text">$<%='%.2f' %  (order_item.single_item_total_cost).to_f %></p>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <hr class="hr-total">
+        <section class="d-flex align-items-end flex-column pl-5">
+          <div class="mb-auto p-2">
+            <h4 class="cart__text">ORDER TOTAL: $<%= '%.2f' % @order.total_orders %></h4>
+          </div>
+          <br>
+          <% if current_user %>
+            <%= link_to "Cancel Order", cancel_path(@order), method: :patch, data: {confirm: "Are you sure you want to cancel this order?"}, class: "cart__remove-button" %>
+          <%end %>
+            </section>
+      </section>
   <% end %>
-  </ul>
-<% end %>
 </section>
+
