@@ -12,24 +12,22 @@
       </div>
       <div class="small-12 medium-6 columns">
         <h3>Orders</h3>
+
         <p>
           Paid Orders:
           <% if @orders_paid.empty? %>
             N/A
           <% else %>
-            <%= @orders_paid.each do |order| %>
-              ID: <%= order.id %>, CREATED <%= order.created_at.strftime("%Y-%m-%d") %>
-            <% end %>
+            <%= @orders_paid.count %>
           <% end %>
         </p>
+
         <p>
           Completed Orders:
           <% if @orders_complete.empty? %>
             N/A
           <% else %>
-            <%= @orders_complete.each do |order| %>
-              ID: <%= order.id %>, CREATED <%= order.created_at.strftime("%Y-%m-%d") %>
-            <% end %>
+            <%= @orders_complete.count %>
           <% end %>
         </p>
         <p>
@@ -37,9 +35,7 @@
           <% if @orders_cancelled.empty? %>
             N/A
           <% else %>
-            <%= @orders_cancelled.each do |order| %>
-              ID: <%= order.id %>, CREATED <%= order.created_at.strftime("%Y-%m-%d") %>
-            <% end %>
+            <%= @orders_cancelled.count %>
           <% end %>
         </p>
         <p>
@@ -47,9 +43,7 @@
           <% if @orders.empty? %>
             This merchant had no orders on record.
           <% else %>
-            <%= @orders.each do |order| %>
-              ID: <%= link_to order.id, order_path(id: order.id) %>, CREATED <%= order.created_at.strftime("%m-%d-%Y") %>,
-            <% end %>
+            <%= @orders.count %>
           <% end %>
         </p>
       </div>
