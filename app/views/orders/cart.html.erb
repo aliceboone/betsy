@@ -1,12 +1,12 @@
 <section class="content px-5 mx-5">
   <section class='order'>
     <h2 class="h-center-text cart__title">YOUR CART</h2>
-    <% if @order.nil? %>
+    <% if @order_items.count == 0 %>
       <hr>
       <h2 class="cart__text">Cart is empty </h2>
     </section>
       </section>
-      <% else %>
+    <% else %>
       <table class="table" cellspacing="0" width="100%">
         <thead>
         <tr>
@@ -38,7 +38,7 @@
               <p class="cart__text"><span class='text-bold cart__text'> $<%= order_item.product.price %> </span></p>
             </td>
             <td class="text-just-center">
-              <p class="cart__text"><span class='text-bold cart__text'> $$<%='%.2f' %  (order_item.single_item_total_cost).to_f %> </span></p>
+              <p class="cart__text"><span class='text-bold cart__text'> $<%='%.2f' %  (order_item.single_item_total_cost).to_f %> </span></p>
             </td>
           </tr>
         <% end %>
