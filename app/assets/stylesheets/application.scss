@@ -144,7 +144,7 @@ h1 {
 
 .cart-img {
   width: 30px;
-  background-color: white;
+  background-color: #FFFFE0;
   padding-bottom: 5px;
 }
 
@@ -177,5 +177,19 @@ body {
 
 .user-nav {
   color: #99f542;
+}
+
+.order-item-action-in-cart{
+  margin-left: 1em;
+  list-style: none;
+}
+
+.order-item-action-in-cart a{
+  color: #135937;
+  font-size: smaller;
+}
+
+#delete-from-order a{
+  color: red;
 }
 

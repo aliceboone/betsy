@@ -1,0 +1,73 @@
+<section class="content" >
+<div class="row">
+  <div class="small-6 large-centered columns" id="order_sum">
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <h3>Revenue</h3>
+
+        <p>Paid Order Revenue: </p>
+        <p>Completed Order Revenue: </p>
+
+        <p>Total Revenue*: </p>
+      </div>
+      <div class="small-12 medium-6 columns">
+        <h3>Orders</h3>
+        <p>
+          Paid Orders:
+          <% if @orders_paid.empty? %>
+            N/A
+          <% else %>
+            <%= @orders_paid.each do |order| %>
+              ID: <%= order.id %>, CREATED <%= order.created_at.strftime("%Y-%m-%d") %>
+            <% end %>
+          <% end %>
+        </p>
+        <p>
+          Completed Orders:
+          <% if @orders_complete.empty? %>
+            N/A
+          <% else %>
+            <%= @orders_complete.each do |order| %>
+              ID: <%= order.id %>, CREATED <%= order.created_at.strftime("%Y-%m-%d") %>
+            <% end %>
+          <% end %>
+        </p>
+        <p>
+          Cancelled Orders:
+          <% if @orders_cancelled.empty? %>
+            N/A
+          <% else %>
+            <%= @orders_cancelled.each do |order| %>
+              ID: <%= order.id %>, CREATED <%= order.created_at.strftime("%Y-%m-%d") %>
+            <% end %>
+          <% end %>
+        </p>
+        <p>
+          Total Orders:
+          <% if @orders.empty? %>
+            This merchant had no orders on record.
+          <% else %>
+            <%= @orders.each do |order| %>
+              ID: <%= link_to order.id, order_path(id: order.id) %>, CREATED <%= order.created_at.strftime("%m-%d-%Y") %>,
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="center">*Total Revenue calculated based on all successfully shipped items.</p>
+<table>
+  <tbody><tr>
+    <th>Order ID</th>
+    <th>Order Date</th>
+    <th>Items</th>
+    <th>
+    </th>
+    <th>Order Total</th>
+  </tr>
+  </tbody>
+</table>
+</section>
+
+

@@ -17,7 +17,7 @@ describe CategoriesController do
   }
 
   describe "new" do
-    it "can get the new task page" do
+    it "can get the new category page" do
 
       # Act
       get new_category_path
