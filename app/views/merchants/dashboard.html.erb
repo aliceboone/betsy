@@ -57,20 +57,33 @@
   </div>
 </div>
 <p class="center">*Total Revenue calculated based on all successfully shipped items.</p>
-  
-  <h1 class="catalog__header">Order detail page</h1>
+
+  <h1 class="catalog__header">Order details</h1>
   <hr>
+  <table class="table" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+      <th scope="col", class="th-sm cart__text">Order Number</th>
+      <th scope="col", class="th-sm cart__text">Date</th>
+      <th scope="col", class="th-sm cart__text">Credit Card Name</th>
+      <th scope="col", class="th-sm cart__text">Address</th>
+      <th scope="col", class="th-sm cart__text">Zip Code</th>
+      <th scope="col", class="th-sm cart__text">Email</th>
+      <th scope="col", class="th-sm cart__text">Order Status</th>
+    </tr>
+    </thead>
+    <tbody>
   <% @orders.each do |order| %>
-    <div class="card rounded-0 cart__text" style="width: 18rem;">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Name: <%= order.credit_name %></li>
-        <li class="list-group-item">Shipping Address: <%= order.address %></li>
-        <li class="list-group-item">Zip Code: <%= order.zip %></li>
-        <li class="list-group-item">Email: <%= order.email %></li>
-        <li class="list-group-item">Order Number: <%= order.id %></li>
-        <li class="list-group-item">Purchased On: <%= order.created_at.to_date %></li>
-        <li class="list-group-item">Order Status: <%= order.status %></li>
-      </ul>
-  <%end %>
-  </div>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.created_at.to_date %></td>
+        <td><%= order.credit_name %></td>
+        <td><%= order.address %></td>
+        <td><%= order.zip %></td>
+        <td> <%= order.email %></td>
+        <td><%= order.status %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 </section>
