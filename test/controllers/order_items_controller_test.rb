@@ -2,6 +2,27 @@ require "test_helper"
 
 describe OrderItemsController do
 
+  let(:order) {
+    Order.create!(
+        email: 'someone@something.com',
+        address: 'some address',
+        credit_name: 'Someone',
+        credit_expire: '11/22',
+        security_code: 'secret code',
+        zip: 111111,
+        credit_card_name: "1234"
+    )
+  }
+
+  let(:order_item){
+    OrderItem.create!(
+        quantity: 3,
+        product_id: product.id,
+        order_id: order.id,
+        shipped: false
+    )
+  }
+
   describe "Create" do
     it "redirect when there is inavlid product ID" do
       post product_order_items_path(-1)
@@ -22,7 +43,7 @@ describe OrderItemsController do
   describe "Destroy" do # to do later after finish
 
     it "delete a product from the shopping cart and redirect" do
-      skip
+
       post product_order_items_path(products(:product_one))
       id = Product.find_by_id(products(:product_one).id)
       expect {
@@ -32,13 +53,11 @@ describe OrderItemsController do
 
   describe "Add Quantity" do
     it "add quantity of a product in a shopping cart" do
-      skip
     end
   end
 
   describe "reduce Quantity" do
     it "reduce quantity of a product in a shopping cart" do
-      skip
     end
   end
 

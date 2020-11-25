@@ -60,6 +60,6 @@ class Order < ApplicationRecord
     orders = Order.where(order_items: order_items)
 
     return orders.where.not(status: 'pending')
-
   end
+
 end
