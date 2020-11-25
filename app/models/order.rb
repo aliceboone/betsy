@@ -59,6 +59,7 @@ class Order < ApplicationRecord
     order_items = OrderItem.where(product: products)
     orders = Order.where(order_items: order_items)
 
-    return orders
+    return orders.where.not(status: 'pending')
+
   end
 end
