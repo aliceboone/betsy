@@ -4,9 +4,17 @@ class Order < ApplicationRecord
   
   def add_product(product, quantity)
     order_item = self.order_items.where(product_id: product.id).first
+    inventory = product.inventory
+    if order_item
+      quantity += order_item.quantity
+    end
+
+    if quantity >= inventory
+      quantity = inventory
+    end
 
     if order_item
-      order_item.quantity += quantity
+      order_item.quantity = quantity
     else
       order_item = OrderItem.new(order: self, product: product, quantity: quantity)
     end
@@ -41,12 +49,10 @@ class Order < ApplicationRecord
     self.save
   end
 
-  def self.total_orders
-      sum = 0
-      self.order_item.each do |order_item|
-        sum += (order_items.product.price * order_item.quantity)
+  def total_orders
+    return order_items.sum do |order_item|
+        order_item.product.price * order_item.quantity
       end
-      return sum
   end
 
 end

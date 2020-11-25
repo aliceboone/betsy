@@ -1,14 +1,19 @@
 <h2>Your Cart</h2>
+<% sum = 0 %>
 
-<% if @order_items.empty? %>
+<% if @order.nil? %>
   Cart is Empty
   <% else %>
+
   <ul>
   <% @order_items.each do |order_item| %>
-    <li><%= order_item.product.name %>,quantity: <strong><%= order_item.quantity %></strong>, price: <strong>$<%='%.2f' %  order_item.product.price.to_f %> </strong></li>
+    <li><%= link_to order_item.product.name, order_item.product %>, quantity: <strong><%= order_item.quantity  %></strong>, price: <strong>$<%='%.2f' %  (order_item.single_item_total_cost).to_f %><li class="order-item-action-in-cart"></strong><span id="delete-from-order"><%= link_to "Delete ", order_item_path(order_item), method: :delete
+  %></span> | <%= link_to "Add one", order_item_add_path(:id => order_item), method: :post %> |
+      <%= link_to "Reduce one", order_item_reduce_path(:id => order_item), method: :post%></li></li>
+      <% sum += order_item.single_item_total_cost %>
   <% end %>
   </ul>
 <% end %>
-<strong>Total cost: <%= $<%='%.2f' % Order.total_orders%></strong>
-
+<strong>Total cost: $<%= '%.2f' % @cart.total_orders %></strong>
+<br>
 <%= link_to 'Checkout', edit_order_path(@cart), class: "btn btn-primary"%>

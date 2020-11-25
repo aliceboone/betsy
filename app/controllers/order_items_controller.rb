@@ -32,7 +32,7 @@ class OrderItemsController < ApplicationController
   def destroy
     @order_item = OrderItem.find(params[:id])
     @order_item.destroy
-    redirect_to order_path(@order)
+    redirect_to cart_path
   end
 
   def update_quantity
@@ -41,18 +41,18 @@ class OrderItemsController < ApplicationController
 
   def add_quantity
     @order_item = OrderItem.find(params[:id])
-    @order_item.quantity += 1
-    @order_item.save
-    redirect_to order_path(@order)
+    unless @order_item.add_quantity
+      flash[:error] = "#{@order_item.product.name} Quantity is more than the inventory"
+    end
+    redirect_to cart_path
   end
 
   def reduce_quantity
     @order_item = OrderItem.find(params[:id])
-    if @order_item.quantity > 1
-      @order_item.quantity -= 1
+    unless @order_item.reduce_quantity
+      flash[:error] = "#{@order_item.product.name} Quantity was modified according to the product inventory"
     end
-    @order_item.save
-    redirect_to order_path(@order)
+    redirect_to cart_path
   end
 
   private
