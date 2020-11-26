@@ -63,4 +63,10 @@ describe Merchant do
       expect(merchant.errors.messages[:email]).must_equal ["has already been taken"]
     end
   end
+
+  describe 'custom models' do
+    it 'determines total revenue' do
+
+    end
+  end
 end
