@@ -5,6 +5,7 @@ SimpleCov.start 'rails' do
   add_filter 'job'
   add_filter 'helper'
   add_filter 'channel'
+  add_filter 'bin'
 end
 
 # SimpleCov.start
