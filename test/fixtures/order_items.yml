@@ -40,4 +40,4 @@ inventory_zero_test_order_item:
 inventory_decrease_test_order_item:
   product: inventory_decrease_test_product
   order: inventory_decrease_test_with_one_item
-  quantity: 0
+  quantity: 1

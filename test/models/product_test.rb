@@ -21,10 +21,11 @@ describe Product do
 
     it 'can decrease inventory' do
       # arrange
-      product = products(:inventory_zero_test_product)
+      product = products(:inventory_decrease_test_product)
       # act
-      product.decrease_inventory
+      decrease = product.decrease_inventory(1)
       # assert
+      expect(decrease).must_equal 2
     end
 
     it "can have many categories" do
