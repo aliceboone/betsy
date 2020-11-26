@@ -47,7 +47,6 @@ class Order < ApplicationRecord
     self.save
   end
 
-
   def total_orders
     return order_items.sum do |order_item|
         order_item.product.price.to_f * order_item.quantity
@@ -62,4 +61,9 @@ class Order < ApplicationRecord
     return orders.where.not(status: 'pending')
   end
 
+  def maybe_complete!
+    return unless self.order_items.where(shipped: false).empty?
+
+    self.update!(status: "complete")
+  end
 end

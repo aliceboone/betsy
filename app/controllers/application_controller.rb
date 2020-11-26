@@ -62,10 +62,6 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= Merchant.find_by(id: session[:merchant_id])
-    # unless @current_merchant
-    #   must_be_logged
-    #   redirect_to root_path
-    # end
   end
   helper_method :current_user
 
