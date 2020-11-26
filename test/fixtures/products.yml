@@ -1,6 +1,7 @@
 product_one:
   name: desk lamp
   price: 12.50
+  inventory: 10
   merchant: merch_one
 product_two:
   name: nalgene

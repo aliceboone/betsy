@@ -65,4 +65,9 @@ class Order < ApplicationRecord
     return orders.where.not(status: 'pending')
   end
 
+  def maybe_complete!
+    return unless self.order_items.where(shipped: false).empty?
+
+    self.update!(status: "complete")
+  end
 end
