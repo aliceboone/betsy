@@ -41,3 +41,8 @@ inventory_decrease_test_order_item:
   product: inventory_decrease_test_product
   order: inventory_decrease_test_with_one_item
   quantity: 1
+
+review_test_order_item:
+  product: review_test_product
+  order: review_test_order
+  quantity: 1

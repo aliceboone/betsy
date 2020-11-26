@@ -19,3 +19,6 @@ inventory_zero_test_empty_order:
 
 inventory_decrease_test_empty_order:
   status: pending
+
+review_test_order:
+  status: pending

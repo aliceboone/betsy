@@ -41,3 +41,9 @@ inventory_decrease_test_product:
   price: 20
   inventory: 3
   merchant: inventory_decrease_test_merchant
+
+review_test_product:
+  name: review_test_product
+  price: 15
+  inventory: 3
+  merchant: review_test_merchant

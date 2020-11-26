@@ -35,3 +35,7 @@ inventory_zero_test_merchant:
 inventory_decrease_test_merchant:
   username: inventory_decrease_test_merchant
   email: inventory_decrease_test_merchant@finder.com
+
+review_test_merchant:
+  username: review_test_merchant
+  email: review_test_merchant@finder.com

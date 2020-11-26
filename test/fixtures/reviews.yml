@@ -10,3 +10,13 @@ reviewthree:
   product_id: 2
   content: "this is a review"
   rating: 1
+
+test_review_1:
+  product: review_test_product
+  content: "test review"
+  rating: 2
+
+test_review_2:
+  product: review_test_product
+  content: "test review"
+  rating: 4

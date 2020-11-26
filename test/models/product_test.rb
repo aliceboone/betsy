@@ -28,19 +28,24 @@ describe Product do
       expect(decrease).must_equal 2
     end
 
-    it "can have many categories" do
-      skip
-      #take a product that has a category and set it to must have num
-    end
+    it 'can produce an average rating' do
+      # product = products(:product_three)
+      # review_one = Review.new
+      # review_one[:rating] = 4
+      # review_one.product = product
+      #
+      # review_two = Review.new
+      # review_two[:rating] = 1
+      # review_two.product = product
+      # arrange
+      # review_1 = reviews(:test_review_1)
+      # review_2 = reviews(:test_review_2)
+      product = products(:review_test_product)
+      average = product.average_rating
+      expect(average).must_equal 3
 
-    it "can have no categories" do
-      skip
-      #take a product with no category and expect 0
-        expect(product.merchant_id).must_equal merchant.id
     end
   end
-
-
 
   describe "validations" do
     it "product must have a name" do
