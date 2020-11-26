@@ -22,8 +22,16 @@ describe OrderItemsController do
         shipped: false
     )
   }
+  let (:order_item_hash) {
+    {
+        order_item: {
+            quantity: 3
+        }
+    }
+  }
 
   describe "Create" do
+
     it "redirect when there is inavlid product ID" do
       post product_order_items_path(-1)
       expect(flash[:error]).must_equal "Invalid product"
@@ -33,8 +41,8 @@ describe OrderItemsController do
     end
 
     it "can add product to the shopping cart and redirect" do
-      skip
-      post product_order_items_path(products(:product_one))
+      # skip
+      post product_order_items_path(products(:product_one)), params: order_item_hash
       must_respond_with :redirect
       must_redirect_to cart_path
     end
@@ -44,11 +52,11 @@ describe OrderItemsController do
   describe "Destroy" do # to do later after finish
 
     it "delete a product from the shopping cart and redirect" do
-      skip
-      post product_order_items_path(products(:product_one))
-      id = Product.find_by_id(products(:product_one).id)
+      # skip
+      post product_order_items_path(products(:product_one)), params: order_item_hash
+      @cart = Order.find_by(id: session[:cart_id])
       expect {
-        delete product_order_item_path(id)}.must_change 'OrderItem.count', -1
+        delete order_item_path(@cart.order_items.first)}.must_change 'OrderItem.count', -1
     end
   end
 

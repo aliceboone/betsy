@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   post 'order_items/:id/reduce',to: "order_items#reduce_quantity", as: "order_item_reduce"
 
   resources :order_items, only: %i[update destroy]
-  patch 'order_items/:id/mark_shipped', to: 'order_items#mark_shipped', as: 'mark_shipped'
+  post 'order_items/:id/mark_shipped', to: 'order_items#mark_shipped', as: 'mark_shipped'
 
   get '/orders/cart', to: 'orders#cart', as: 'cart'
 
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   get '/orders/:id/cart/success', to: 'orders#success', as: 'success'
   patch '/orders/:id/cancel', to: 'orders#cancel', as: 'cancel'
+  get '/orders/:id/fulfill', to: 'orders#fulfill', as: 'fulfill'
 
   resources :reviews, only: [:create, :update]
   resources :order_items

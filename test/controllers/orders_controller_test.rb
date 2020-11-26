@@ -54,18 +54,9 @@ require "test_helper"
       )
     }
 
-  describe 'Index' do
-    it 'should get index' do
-      order
-
-      get orders_path
-      must_respond_with :success
-    end
-  end
-
   describe 'Show' do
     it 'can get a valid order' do
-      # skip
+
       order
 
       get order_path(order.id)
@@ -116,12 +107,12 @@ require "test_helper"
     end
 
     it 'will redirect for an invalid order' do
-      skip
       expect{
         patch order_path(-1), params: order_hash
       }.wont_change 'Order.count'
 
-      must_respond_with :success
+      must_respond_with :redirect
+      must_redirect_to root_path
     end
   end
 end

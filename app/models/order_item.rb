@@ -35,4 +35,8 @@ class OrderItem < ApplicationRecord
     self.save
   end
 
+  def mark_shipped!
+    self.update!(shipped: true)
+    self.order.maybe_complete!
+  end
 end

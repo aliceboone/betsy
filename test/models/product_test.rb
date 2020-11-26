@@ -1,6 +1,7 @@
 require "test_helper"
 
 describe Product do
+
   describe 'relations' do
     # has merchant_id
     describe 'merchants' do
@@ -9,16 +10,6 @@ describe Product do
         product = products(:product_three)
 
         expect(product.merchant_id).must_equal merchant.id
-      end
-
-      it "can have many categories" do
-        skip
-        #take a product that has a category and set it to must have num
-      end
-
-      it "can have no categories" do
-        skip
-        #take a product with no category and expect 0
       end
     end
   end
@@ -79,4 +70,4 @@ describe Product do
         expect(product.errors.messages[:merchant]).must_equal ["must exist", "can't be blank"]
       end
     end
-end
+  end

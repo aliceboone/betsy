@@ -1,5 +1,6 @@
 class OrderItemsController < ApplicationController
   before_action :require_cart, only: [:create]
+  before_action :find_order_item, only: [:destroy, :add_quantity, :mark_shipped, :reduce_quantity]
 
   def index
   end
@@ -30,7 +31,6 @@ class OrderItemsController < ApplicationController
   end
 
   def destroy
-    @order_item = OrderItem.find(params[:id])
     @order_item.destroy
     redirect_to cart_path
   end
@@ -40,7 +40,6 @@ class OrderItemsController < ApplicationController
   end
 
   def add_quantity
-    @order_item = OrderItem.find(params[:id])
     unless @order_item.add_quantity
       flash[:error] = "#{@order_item.product.name} Quantity is more than the inventory"
     end
@@ -48,16 +47,28 @@ class OrderItemsController < ApplicationController
   end
 
   def reduce_quantity
-    @order_item = OrderItem.find(params[:id])
     unless @order_item.reduce_quantity
       flash[:error] = "#{@order_item.product.name} Quantity was modified according to the product inventory"
     end
     redirect_to cart_path
   end
 
+  def mark_shipped
+    not_found_notice if @order_item.nil?
+    @order_item.mark_shipped!
+
+    @order_item.save
+    redirect_to dashboard_path
+  end
+
+
   private
+
+  def find_order_item
+    @order_item = OrderItem.find(params[:id])
+  end
+
   def order_item_params
     params.require(:order_item).permit(:quantity, :product_id, :order_id, :shipped)
   end
-
 end
