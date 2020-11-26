@@ -1,0 +1,58 @@
+<section class="content">
+  <h1 class="cart__text">Order Fulfillment</h1>
+  <hr>
+
+    <h3 class="cart__text">Order's Current status: <%= @order.status %> </h3>
+    <h3 class="cart__text">Purchase made on: <%= @order.created_at.to_date  %></h3>
+    <table class="table" cellspacing="0" width="100%">
+      <thead>
+      <tr>
+        <th scope="col", class="th-sm cart__text"></th>
+        <th scope="col", class="th-sm cart__text">Product</th>
+        <th scope="col", class="th-sm cart__text">Quantity</th>
+        <th scope="col", class="th-sm cart__text">Item Price</th>
+        <th scope="col", class="th-sm cart__text">Item Total</th>
+        <th scope="col", class="th-sm cart__text">Status</th>
+        <th scope="col", class="th-sm cart__text">Ship</th>
+      </tr>
+      </thead>
+      <tbody>
+
+      <% @order_items.each do |order_item| %>
+        <tr>
+          <td width=10%>
+            <%= image_tag "#{order_item.product.photo}", alt: "#{order_item.product.name}", class: "img-fluid img-thumbnail rounded-0" %>
+          </td>
+          <td class="text-just-center cart">
+            <h4 class="cart__text"><%= link_to order_item.product.name, order_item.product, class: "text-dark, cart__text" %></h4>
+          </td>
+          <td width=10% class="mr-4 pr-4">
+            <p class = "cart__text">
+              <%= order_item.quantity %>
+            </p>
+          </td>
+          <td class="text-just-center">
+            <p class="cart__text"><span class='text-bold cart__text'> $<%= order_item.product.price %> </span></p>
+          </td>
+          <td class="text-just-center">
+            <p class="cart__text">$<%='%.2f' % (order_item.single_item_total_cost).to_f %></p>
+          </td>
+          <td class="text-just-center cart">
+            <% if order_item.shipped %>
+              <h6 class = "cart__text order__shipped">
+                shipped
+              </h6>
+            <% else %>
+              <h6 class = "cart__text order__not-shipped">
+                not shipped
+              </h6>
+            <% end %>
+          </td>
+          <td class="text-just-center cart">
+            <%= link_to "Mark Shipped", mark_shipped_path(order_item), method: :post, data: {confirm: "Are you sure you want to mark #{order_item.product.name} as shipped?"}, class: "cart__remove-button" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </section>
