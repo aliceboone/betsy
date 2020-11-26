@@ -61,4 +61,47 @@ describe OrderItem do
     end
   end
 
+  describe 'single_item_total_cost' do
+    it 'returns the correct cost of an order item with consideration of quantity' do
+      product = products(:product_one)
+      order_item = OrderItem.new(quantity: 8)
+      order_item.product = product
+      total_price = order_item.quantity * product.price
+
+      expect(order_item).must_be_instance_of OrderItem
+      expect(order_item.single_item_total_cost).must_equal total_price
+
+    end
+  end
+
+  describe 'add_quantity' do
+    before do
+      @product = products(:product_one)
+      @order_item = OrderItem.new(quantity: 9)
+      @order_item.product = @product
+    end
+
+    it 'adds one additional product to the order' do
+      @order_item.add_quantity
+      expect(@order_item.quantity).must_equal 10
+    end
+
+    it 'will not add product if there is no enough inventory for that product' do
+      @order_item.add_quantity
+      expect(@order_item.quantity).must_equal 10
+    end
+  end
+
+  describe 'reduce_quantity' do
+    before do
+      @product = products(:product_one)
+      @order_item = OrderItem.new(quantity: 2)
+      @order_item.product = @product
+    end
+
+    it 'reduce one product from the order' do
+      @order_item.reduce_quantity
+      expect(@order_item.quantity).must_equal 1
+    end
+  end
 end
